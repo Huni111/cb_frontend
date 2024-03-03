@@ -1,0 +1,251 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+ }
+ 
+ #root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  margin: 0;
+
+
+ }
+
+
+/* HEADER */
+header {
+  background-image: url(../images/header.jpg);
+  background-color: rgba(0, 0, 0, 0.355);
+  background-blend-mode: overlay;
+}
+
+.cim {
+  color: #F05941;
+  font-family: 'Caveat', cursive;
+}
+
+/* NAVBAR-STYLE */
+nav {
+  margin: 25px;
+  background: #be31449f;
+  padding: 16px;
+}
+
+.menuItems {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+}
+
+.menuItems li {
+  margin-left: 1.5rem;
+  margin-right: 1.5rem;
+}
+
+.menuItems li a {
+  text-decoration: none;
+  color: #22092C;
+  font-size: 1.2rem;
+  font-weight: 400;
+  transition: all 0.5s ease-in-out;
+  position: relative;
+  text-transform: uppercase;
+}
+
+.menuItems li a::before {
+  content: attr(data-item);
+  transition: 0.5s;
+  color: #8254ff;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 0;
+  overflow: hidden;
+}
+
+.menuItems li a:hover {
+  transition: all 0.5s ease-in-out;
+  color: #F05941;
+}
+
+.menuItems li a:hover::before {
+  width: 100%;
+  color: transparent;
+}
+
+/* RECIPE LIST */
+main {
+  display: flex;
+  flex: 1;
+
+  flex-wrap: wrap;
+  justify-content: space-around;
+  padding: 20px;
+  background-color: #FECDA6; /* Light Peach color */  
+  width: 100%; 
+  height: 100%; 
+  overflow: auto;
+  
+}
+
+
+
+/* Recipe tile styles */
+.recipe {
+  background-color: #FECDA6; /* Light Peach color */
+  border: 1px solid #A9A9A9; /* Dark Gray color */
+  border-radius: 10%;
+  padding: 15px;
+  margin: 2rem 2rem;
+  min-width: 8rem;
+  min-height: 8rem;
+  width: calc(25% - 20px);
+  box-sizing: border-box;
+  position: relative;
+  background-size: cover;
+  background-position: center;
+  height: 0;
+  padding-bottom: 22%;
+  transition: transform 0.3s ease-in-out;
+  cursor: pointer;
+  box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
+  flex-grow: initial;
+  
+}
+
+.recipe:hover {
+  transform: scale(1.03);
+}
+.recipe div {
+  height: 100%; /* Make the div inside the link take up the full height */
+}
+
+.recipe img {
+  width: 100%;
+  height: 100%;
+ 
+  transition: transform 0.3s ease-in-out;
+}
+
+.recipe-name-corner {
+  background-color: rgba(255, 255, 255, 0.6);
+  border-radius: 5%;
+  display: inline;
+  padding: 0.6rem;
+  transition: opacity 0.3s ease-in-out;
+  opacity: 1;
+  color: #F05941;
+  margin: 0;
+}
+.recipe:hover .recipe-name-corner {
+  opacity: 0;
+  
+}
+
+
+.recipe-name {
+  margin: 0;
+  color: #F05941; 
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+  background-color: rgba(255, 255, 255, 0.7); /* White with 70% opacity */
+  padding: 10px;
+}
+
+.recipe:hover .recipe-name {
+  opacity: 1;
+}
+
+/* RECIPE DETAIL PAGE */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+ }
+ .wrap-detail {
+  width: 100%;
+  background-color: #FECDA6;
+ }
+
+ .detail-block {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  flex-grow: 0.6;
+  width: 80%;
+  margin:auto;
+
+}
+
+.detail-section {
+  margin: 0rem;
+  width: 50%;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-content: space-around;
+  flex-shrink: 0.8;
+} 
+
+.detail-section h2  {
+  font-size: x-large;
+  font-weight: bold;
+
+} 
+.detail-section h3 {
+  font-size: large;
+  font-weight: bold;
+
+}
+.recipe-title {
+  margin-left: 3rem;
+  font-size: xx-large;
+  font-weight: bold;
+}
+
+.recipe-img {
+  max-width: 100%;
+  height: auto;
+}
+
+@media (max-width: 700px) {
+  .detail-section {
+    width: 100%; /* Make each section take up the full width on narrow screens */
+  }
+}
+/* RECIPE DETAIL PAGE */
+
+/* FOOTER */
+
+footer {
+  background-color: #A9A9A9; /* Dark Gray color */
+  color: #fff;
+  padding: 10px;
+  text-align: center;
+  height: 100%;
+  margin-top: auto;
+  position: relative;
+  height: 100%; /* Make the footer take up the full height */
+}
+
+.social-media-icons a {
+  margin: 0 10px;
+}
+
+img {
+  max-width: 30px;
+}
+
+h5,
+h6 {
+  margin: 5px 0;
+}
