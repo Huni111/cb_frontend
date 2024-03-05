@@ -52,7 +52,7 @@ const createList = (rec) => {
     return (
         <>
         <main>
-        {loaded ? recipe.map(createList) : <div style={{height: '30rem'}}><h2 style={{color: '#F05941', fontSize: "large", fontWeight: 'bold', margin: '5rem'}}>Betoltes...</h2></div>}
+        {loaded && recipe !== [] ? recipe.map(createList) : <div style={{height: '30rem'}}><h2 style={{color: '#F05941', fontSize: "large", fontWeight: 'bold', margin: '5rem'}}>Betoltes...</h2></div>}
         </main>
         </>
     )
