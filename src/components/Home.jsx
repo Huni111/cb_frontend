@@ -28,7 +28,7 @@ const [loaded, setLoaded] = useState(false)
         setError(err);
         setRecipe(null);
         setLoaded(true)
-        console.log(`ERROR FETCHING DATA! ${error.message}`);
+        throw new Error("failed fetching"+err);
 
 
        }
