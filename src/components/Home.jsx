@@ -6,7 +6,7 @@ import List from "./LIst";
 
 const Home = () => {
 
-const [recipe, setRecipe] = useState([]);
+const [recipe, setRecipe] = useState();
 const [error, setError] = useState(null)
 const [loaded, setLoaded] = useState(false)
 
@@ -52,7 +52,7 @@ const createList = (rec) => {
     return (
         <>
         <main>
-        {loaded && recipe.name[0] ? recipe.map(createList) : <div style={{height: '30rem'}}><h2 style={{color: '#F05941', fontSize: "large", fontWeight: 'bold', margin: '5rem'}}>Betoltes...</h2></div>}
+        {loaded && recipe ? recipe.map(createList) : <div style={{height: '30rem'}}><h2 style={{color: '#F05941', fontSize: "large", fontWeight: 'bold', margin: '5rem'}}>Betoltes...</h2></div>}
         </main>
         </>
     )
