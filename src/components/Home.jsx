@@ -13,11 +13,12 @@ const [loaded, setLoaded] = useState(false)
     const fetchData = async() => {
 
        try{
-        const req = await fetch('http://localhost:3000/recipes/');
+        const req = await fetch('https://cook-book-server.onrender.com/api/recipe/all');
         const data = await req.json();
         setRecipe(data);
         setError(null)
         setLoaded(true)
+        console.log(recipe[0])
        }catch(err){
         setError(err);
         setRecipe(null);
@@ -38,10 +39,10 @@ const createList = (rec) => {
     return(
         
         <List 
-            rid={rec.id}
+            rid={rec._id}
             name={rec.name}
-            img={rec["img-link"]}
-            key={rec.id}
+            img={rec.image_link}
+            key={rec._id}
         />
         
     )

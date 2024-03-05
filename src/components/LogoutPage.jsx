@@ -6,16 +6,16 @@ import { UserContext } from '../contexts/userContext';
 const jwtToken = Cookies.get('jwt');
 
 const LogoutPage = () => {
-  const [success, setSuccess] = useState(false);
+  const [success, setSuccess] = useState(undefined);
   const [error, setError] = useState(null);
-  const {clearUser} = useContext(UserContext)
+  const { clearUser } = useContext(UserContext)
 
   const handleLogout = async () => {
     try {
-     
+
 
       // Make the logout request
-      const req = await fetch('https://cook-book-server.onrender.com/api/user/logout',{
+      const req = await fetch('https://cook-book-server.onrender.com/api/user/logout', {
         method: 'POST',
         credentials: 'include',
       });
@@ -42,12 +42,10 @@ const LogoutPage = () => {
   return (
     <main>
       <div style={styles.container}>
-        <button onClick={handleLogout} style={{border: '2px solid orange', color: '#F05941'}}>Kijelentkezes:</button>
-        {success ? (
-          <h2 style={{ ...styles.header, color: "#F05941" }}>Kijelentkezve!</h2>
-        ) : (
-          <h2 style={{ ...styles.header, color: "red" }}>Sikertelen!</h2>
-        )}
+        <button onClick={handleLogout} style={{ border: '2px solid orange', color: '#F05941' }}>Kijelentkezes:</button>
+        {success === undefined && <h2 style={{ ...styles.header, color: "#F05941" }}>Kijelentkezes...</h2>}
+        {success && <h2 style={{ ...styles.header, color: "#F05941" }}>Kijelentkezve!</h2>}
+        {error && <h2 style={{ ...styles.header, color: "red" }}>Sikertelen!</h2>}
       </div>
     </main>
   );

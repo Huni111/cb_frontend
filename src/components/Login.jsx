@@ -3,7 +3,7 @@ import { UserContext } from '../contexts/userContext';
 
 
 const LoginPage = () => {
-  const {loginUser} = useContext(UserContext);
+  const { loginUser } = useContext(UserContext);
   const [succes, setSucces] = useState(false);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false)
@@ -20,14 +20,14 @@ const LoginPage = () => {
     }));
   };
 
-  const handleSubmit = async(e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
     setSucces(false)
     setError(null)
 
     // Perform login logic here, like sending data to the server
-    try{
+    try {
       const req = await fetch(import.meta.env.VITE_API_ENDPOINT_AUTH, {
         method: 'POST',
         headers: {
@@ -40,19 +40,20 @@ const LoginPage = () => {
         credentials: 'include'
       })
       const data = await req.json()
-      loginUser(data)
-      if(!req.ok){
-        throw new Error(`Error in login: ${data.message}`)
-        
-      }else{
+      if (!req.ok) {
+        throw new Error(`Error in login: ${data.message}`);
+
+      } else {
         console.log('Loged in!')
         setLoading(false);
         setSucces(true);
-        setError(null)
+        setError(null);
+
       }
+      
+      loginUser(data)
 
-
-    }catch(err) {
+    } catch (err) {
       setError(err);
       setSucces(false);
       setLoading(false)

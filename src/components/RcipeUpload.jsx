@@ -1,8 +1,15 @@
 import React, { useState } from "react";
+import { json } from "react-router-dom";
 
 const UploadForm = () => {
+
+  const [succes, setSucces] = useState(false);
+  const [error, setError] = useState(null);
+  const [loading, setLoading] = useState(false)
+
   const [formData, setFormData] = useState({
     recipeName: "",
+    language: "",
     ingList: ["so", "bors", "paprika"],
     instructions: "",
     imgLink: "",
@@ -12,6 +19,17 @@ const UploadForm = () => {
     storredIng: ''
 
   });
+
+  const recipe = {
+    name: formData.recipeName,
+    language: formData.language,
+    meal_time: formData.mealtime,
+    category: formData.category,
+    ingredients: formData.ingList,
+    instructions: formData.instructions,
+    image_link: formData.imgLink,
+    preparation_time: formData.cookingTime,
+  }
 
   const handleInputChange = (event) => {
     const { name, value } = event.target;
@@ -54,9 +72,36 @@ const UploadForm = () => {
       }));
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async(event) => {
     event.preventDefault();
     console.log("Form data:", formData);
+
+    try{
+
+      const res =await fetch('https://cook-book-server.onrender.com/api/recipe/new', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        credentials: 'include',
+        body: JSON.stringify({recipe})
+      });
+      const data = await res.json();
+
+      if(!res.ok){
+        throw new Error(`Error in login: ${data.message}`)
+        
+      }else{
+        console.log('Loged in!')
+        setLoading(false);
+        setSucces(true);
+        setError(null)
+      }
+
+    }catch(err) {
+      setError(err)
+      throw new Error('Failed saving data!');
+    }
 
 
 
@@ -71,6 +116,10 @@ const UploadForm = () => {
       <main>
         <div style={styles.container}>
           <h1 style={styles.header}>UJ RECEPT</h1>
+          {succes && <h3 style={{ ...styles.header, color: 'green' }}>Mentve!</h3>}
+          {loading && <h3 style={{ ...styles.header, color: '#F05941' }}>Folyamatban...!</h3>}
+          {error && <h3 style={{ ...styles.header, color: 'red' }}>Hibas a mentes soran!</h3>}
+
           <form style={styles.form} onSubmit={handleSubmit}>
             <label style={styles.label}>Uj recept:</label>
             <input
@@ -81,6 +130,13 @@ const UploadForm = () => {
               value={formData.recipeName}
               onChange={handleInputChange}
             />
+            <label style={styles.label} >Nyelv:</label>
+            <select style={styles.select} name="language" value={formData.language} onChange={handleInputChange}>
+              <option value=''>Milyen nyelven irod a receptet?</option>
+              <option value="English">English</option>
+              <option value="Magyar">Magyar</option>
+              <option value="Romana">Romana</option>
+            </select>
             <br />
             <label style={styles.label}>Hozzavalok:</label>
             {formData.ingList.length !== 0 ? (
@@ -138,7 +194,7 @@ const UploadForm = () => {
             />
             <br />
             <label style={styles.label} >Etkezes:</label>
-            <select style={styles.select}  name="mealtime" value={formData.mealtime} onChange={handleInputChange}>
+            <select style={styles.select} name="mealtime" value={formData.mealtime} onChange={handleInputChange}>
               <option value="Kivalaszt">Kivalaszt</option>
               <option value="Eloetel">Eloetel</option>
               <option value="Foetel">Foetel</option>
@@ -213,7 +269,7 @@ const styles = {
     padding: '8px',
     marginBottom: '0.5rem',
   },
-  
+
 }
 
 export default UploadForm

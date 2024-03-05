@@ -8,7 +8,7 @@ const DetailPage = () => {
 
   const fetchRecipe = async () => {
     try {
-      const response = await fetch(`http://localhost:3000/recipes/${recipeId}`);
+      const response = await fetch(`https://cook-book-server.onrender.com/api/recipe/recipes/${recipeId}`);
       const data = await response.json();
       setRecipe(data);
       setError(null);
@@ -23,15 +23,20 @@ const DetailPage = () => {
     fetchRecipe();
   }, []);
 
+  const capitalizeFirstLetter = (str) => {
+    return str.charAt(0).toUpperCase() + str.slice(1);
+  };
+  const title = recipe.name ? capitalizeFirstLetter(recipe.name) : 'Betoltes...'
+
   return (
     <>
       <div className="wrap-detail">
         <div className="detail-block">
-          <h1 className="recipe-title">{recipe.name}</h1>
+          <h1 className="recipe-title">{title}</h1>
         </div>
         <div className="detail-block">
           <div className="detail-section">
-            <img className="recipe-img" src={recipe["img-link"]} alt={recipe.name} />
+            <img className="recipe-img" src={recipe.image_link} alt={recipe.name} />
           </div>
           <div className="detail-section">
             <br />
@@ -47,7 +52,7 @@ const DetailPage = () => {
             <h2>Elkészités:</h2>
             <p>{recipe.instructions}</p>
             <br />
-            <h3>Fozesi ido: {recipe["cooking-time"]} perc</h3>
+            <h3>Fozesi ido: {recipe.preparation_time} perc</h3>
           </div>
         </div>
       </div>
