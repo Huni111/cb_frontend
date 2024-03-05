@@ -13,8 +13,13 @@ const [loaded, setLoaded] = useState(false)
     const fetchData = async() => {
 
        try{
-        const req = await fetch('https://cook-book-server.onrender.com/api/recipe/all');
+        const req = await fetch('https://cook-book-server.onrender.com/api/recipe/all'{
+            credentials: 'include'
+        });
         const data = await req.json();
+        if(!req.ok){
+            throw new Error(data.error)
+        }
         setRecipe(data);
         setError(null)
         setLoaded(true)
