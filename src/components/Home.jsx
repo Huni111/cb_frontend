@@ -25,7 +25,7 @@ const [loaded, setLoaded] = useState(false)
         setLoaded(true)
         console.log(recipe[0])
        }catch(err){
-        setError(err);
+        setError(err.message);
         setRecipe(null);
         setLoaded(true)
         throw new Error("failed fetching"+err);
@@ -57,7 +57,7 @@ const createList = (rec) => {
     return (
         <>
         <main>
-        {loaded && recipe ? recipe.map(createList) : <div style={{height: '30rem'}}><h2 style={{color: '#F05941', fontSize: "large", fontWeight: 'bold', margin: '5rem'}}>Betoltes...</h2></div>}
+        {loaded && recipe && recipe.length > 0 ? recipe.map(createList) : <div style={{height: '30rem'}}><h2 style={{color: '#F05941', fontSize: "large", fontWeight: 'bold', margin: '5rem'}}>Betoltes...</h2></div>}
         </main>
         </>
     )
