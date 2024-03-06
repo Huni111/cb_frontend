@@ -36,7 +36,7 @@ const DetailPage = () => {
         </div>
         <div className="detail-block">
           <div className="detail-section">
-            <img className="recipe-img" src={recipe.image_link} alt={recipe.name} />
+            {recipe.image_link ? (<img className="recipe-img" src={recipe.image_link} alt={title} />) : (<h2>Betoltes...</h2>}
           </div>
           <div className="detail-section">
             <br />
