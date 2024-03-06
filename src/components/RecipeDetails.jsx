@@ -15,7 +15,7 @@ const DetailPage = () => {
     } catch (err) {
       setError(err);
       setRecipe(null);
-      console.log(`ERROR: ${error}`);
+      console.log(`ERROR: ${err.message}`);
     }
   };
 
