@@ -37,7 +37,7 @@ const DetailPage = () => {
   return (
    <>
       {loading ? ( // Render a loading indicator while fetching is in progress
-        <p>Loading...</p>
+        <p>Betoltes...</p>
       ) : (
         <div className="wrap-detail">
           <div className="detail-block">
@@ -55,7 +55,7 @@ const DetailPage = () => {
               <br />
               <h2>Hozzávalók:</h2>
               <ul>
-                {recipe.ingredients ? (
+                {recipe && recipe.ingredients ? (
                   recipe.ingredients.map((ing, index) => <li key={index}>{ing}</li>)
                 ) : (
                   <li>No ingredients!</li>
@@ -63,9 +63,11 @@ const DetailPage = () => {
               </ul>
               <br />
               <h2>Elkészités:</h2>
-              <p>{recipe.instructions}</p>
+              {recipe && recipe.instructions ?
+              <p>{recipe.instructions}</p> : <p>Betoltes...</p>}
               <br />
-              <h3>Fozesi ido: {recipe.preparation_time} perc</h3>
+              {recipe && recipe.preparation_time ? 
+              <h3>Fozesi ido: {recipe.preparation_time} perc</h3> : <p>Betoltes...</p>
             </div>
           </div>
         </div>
