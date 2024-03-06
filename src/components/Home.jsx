@@ -8,7 +8,8 @@ const Home = () => {
 
 const [recipe, setRecipe] = useState();
 const [error, setError] = useState(null)
-const [loaded, setLoaded] = useState(false)
+ const [loading, setLoading] = useState(true);
+
 
     const fetchData = async() => {
 
@@ -27,12 +28,14 @@ const [loaded, setLoaded] = useState(false)
        }catch(err){
         setError(err.message);
         setRecipe(null);
-        setLoaded(true)
+        
         throw new Error("failed fetching"+err);
 
 
-       }
-        setLoaded(true)
+       }finally {
+                setLoading(false);
+            }
+       
     }
 
 useEffect(() => {
@@ -58,9 +61,25 @@ const createList = (rec) => {
 
     return (
         <>
-        <main>
-        {loaded && recipe && recipe.length > 0 ? recipe.map(createList) : <div style={{height: '30rem'}}><h2 style={{color: '#F05941', fontSize: "large", fontWeight: 'bold', margin: '5rem'}}>Betoltes...</h2></div>}
-        </main>
+            <main>
+                {loading ? (
+                    <div style={{ height: '30rem' }}>
+                        <h2 style={{ color: '#F05941', fontSize: 'large', fontWeight: 'bold', margin: '5rem' }}>
+                            Betoltes...
+                        </h2>
+                    </div>
+                ) : recipe && recipe.length > 0 ? (
+                    recipe.map((rec) => (
+                        <List rid={rec._id} name={rec.name} img={rec.image_link} key={rec._id} />
+                    ))
+                ) : (
+                    <div style={{ height: '30rem' }}>
+                        <h2 style={{ color: '#F05941', fontSize: 'large', fontWeight: 'bold', margin: '5rem' }}>
+                            Nincsenek elerheto receptek!
+                        </h2>
+                    </div>
+                )}
+            </main>
         </>
     )
 }
