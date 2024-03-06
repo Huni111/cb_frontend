@@ -22,7 +22,7 @@ const [loaded, setLoaded] = useState(false)
         }
         setRecipe(data);
         setError(null)
-        setLoaded(true)
+        
         
        }catch(err){
         setError(err.message);
@@ -32,7 +32,7 @@ const [loaded, setLoaded] = useState(false)
 
 
        }
-
+        setLoaded(true)
     }
 
 useEffect(() => {
