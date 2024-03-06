@@ -23,7 +23,7 @@ const [loaded, setLoaded] = useState(false)
         setRecipe(data);
         setError(null)
         setLoaded(true)
-        console.log(recipe[0])
+        
        }catch(err){
         setError(err.message);
         setRecipe(null);
