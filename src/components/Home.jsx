@@ -42,9 +42,7 @@ useEffect(() => {
 
 const createList = (rec) => {
 
-    if (!rec.rid) {
-        return null; // or handle this case appropriately
-    }
+   console.log(rec);
     return(
         
         <List 
