@@ -15,7 +15,7 @@ const LogoutPage = () => {
 
 
       // Make the logout request
-      const req = await fetch('https://cook-book-server.onrender.com/api/user/logout', {
+      const req = await fetch(import.meta.env.VITE_API_ENDPOINT_LOGOUT, {
         method: 'POST',
         credentials: 'include',
       });
