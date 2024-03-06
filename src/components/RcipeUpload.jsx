@@ -78,7 +78,7 @@ const UploadForm = () => {
 
     try{
 
-      const res =await fetch('https://cook-book-server.onrender.com/api/recipe/new', {
+      const res =await fetch(import.meta.env.VITE_API_ENDPOINT_CREATE, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
