@@ -5,6 +5,7 @@ const DetailPage = () => {
   const { recipeId } = useParams();
   const [recipe, setRecipe] = useState({});
   const [error, setError] = useState(null);
+  const [loading, setLoading] = useState(true);
 
   const fetchRecipe = async () => {
     try {
@@ -14,9 +15,11 @@ const DetailPage = () => {
       console.log("Data received:", data);
       setRecipe(data);
       setError(null);
+      setLoading(false);
     } catch (err) {
       setError(err);
       setRecipe(null);
+      setLoading(false);
       console.log(`ERROR: ${err.message}`);
     }
   };
@@ -31,33 +34,41 @@ const DetailPage = () => {
   const title = recipe.name ? capitalizeFirstLetter(recipe.name) : 'Betoltes...'
 
   return (
-    <>
-      <div className="wrap-detail">
-        <div className="detail-block">
-          <h1 className="recipe-title">{title}</h1>
-        </div>
-        <div className="detail-block">
-          <div className="detail-section">
-            {recipe.image_link ? (<img className="recipe-img" src={recipe.image_link} alt={title} />) : (<h2>Betoltes...</h2>)}
+   <>
+      {loading ? ( // Render a loading indicator while fetching is in progress
+        <p>Loading...</p>
+      ) : (
+        <div className="wrap-detail">
+          <div className="detail-block">
+            <h1 className="recipe-title">{title}</h1>
           </div>
-          <div className="detail-section">
-            <br />
-            <h2>Hozzávalók:</h2>
-            <ul>
-              {recipe.ingredients ? (
-                recipe.ingredients.map((ing, index) => <li key={index}>{ing}</li>)
+          <div className="detail-block">
+            <div className="detail-section">
+              {recipe.image_link ? (
+                <img className="recipe-img" src={recipe.image_link} alt={title} />
               ) : (
-                <li>No ingredients!</li>
+                <h2>Betoltes...</h2>
               )}
-            </ul>
-            <br />
-            <h2>Elkészités:</h2>
-            <p>{recipe.instructions}</p>
-            <br />
-            <h3>Fozesi ido: {recipe.preparation_time} perc</h3>
+            </div>
+            <div className="detail-section">
+              <br />
+              <h2>Hozzávalók:</h2>
+              <ul>
+                {recipe.ingredients ? (
+                  recipe.ingredients.map((ing, index) => <li key={index}>{ing}</li>)
+                ) : (
+                  <li>No ingredients!</li>
+                )}
+              </ul>
+              <br />
+              <h2>Elkészités:</h2>
+              <p>{recipe.instructions}</p>
+              <br />
+              <h3>Fozesi ido: {recipe.preparation_time} perc</h3>
+            </div>
           </div>
         </div>
-      </div>
+      )}
     </>
   );
 };
