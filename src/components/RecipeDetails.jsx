@@ -31,7 +31,8 @@ const DetailPage = () => {
   const capitalizeFirstLetter = (str) => {
     return str.charAt(0).toUpperCase() + str.slice(1);
   };
-  const title = recipe.name ? capitalizeFirstLetter(recipe.name) : 'Betoltes...'
+  const title = recipe && recipe.name ? capitalizeFirstLetter(recipe.name) : 'Betoltes...';
+
 
   return (
    <>
