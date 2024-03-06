@@ -3,6 +3,7 @@ import { UserContext } from '../contexts/userContext';
 
 
 const LoginPage = () => {
+  const link = import.meta.env.VITE_API_ENDPOINT_AUTH;
   const { loginUser } = useContext(UserContext);
   const [succes, setSucces] = useState(false);
   const [error, setError] = useState(null);
@@ -25,10 +26,11 @@ const LoginPage = () => {
     setLoading(true);
     setSucces(false)
     setError(null)
+    console.log(link);
 
     // Perform login logic here, like sending data to the server
     try {
-      const req = await fetch(import.meta.env.VITE_API_ENDPOINT_AUTH, {
+      const req = await fetch(link, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
