@@ -45,7 +45,7 @@ useEffect(() => {
 
 const createList = (rec) => {
 
-   console.log(rec.rid);
+   
     return(
         
         <List 
