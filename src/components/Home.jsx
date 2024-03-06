@@ -13,7 +13,7 @@ const [loaded, setLoaded] = useState(false)
     const fetchData = async() => {
 
        try{
-        const req = await fetch("https://cook-book-server.onrender.com/api/recipe/all",{
+        const req = await fetch(import.meta.env.VITE_API_ENDPOINT_FINDALL,{
             credentials: 'include'
         });
         const data = await req.json();
