@@ -67,7 +67,7 @@ const DetailPage = () => {
               <p>{recipe.instructions}</p> : <p>Betoltes...</p>}
               <br />
               {recipe && recipe.preparation_time ? 
-              <h3>Fozesi ido: {recipe.preparation_time} perc</h3> : <p>Betoltes...</p>
+              <h3>Fozesi ido: {recipe.preparation_time} perc</h3> : <p>Betoltes...</p>}
             </div>
           </div>
         </div>
