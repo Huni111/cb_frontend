@@ -69,7 +69,7 @@ const createList = (rec) => {
                         </h2>
                     </div>
                 ) : recipe && recipe.length > 0 ? (
-                    recipe.map((rec) => (
+                    recipe.map((rec) => rec._id && (
                         <List rid={rec._id} name={rec.name} img={rec.image_link} key={rec._id} />
                     ))
                 ) : (
