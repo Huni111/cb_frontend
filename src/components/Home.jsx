@@ -15,7 +15,9 @@ const [error, setError] = useState(null)
 
        try{
         console.log(import.meta.env.VITE_API_ENPOINT_FINDONE);
-        const req = await fetch(import.meta.env.VITE_API_ENDPOINT_FINDALL,{
+        const link = import.meta.env.VITE_ENDPOINT_FINDALL;
+        console.log(link);
+        const req = await fetch(link,{
             credentials: 'include'
         });
         const data = await req.json();
