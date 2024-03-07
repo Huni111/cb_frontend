@@ -7,6 +7,8 @@ const DetailPage = () => {
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
 
+  console.log(recipeId);
+
   const fetchRecipe = async () => {
     try {
       const response = await fetch(import.meta.env.VITE_API_ENDPOINT_FINDONE + recipeId);
