@@ -11,7 +11,7 @@ const DetailPage = () => {
 
   const fetchRecipe = async () => {
     try {
-      const response = await fetch(import.meta.env.VITE_API_ENDPOINT_FINDONE + recipeId);
+      const response = await fetch("https://cook-book-server.onrender.com/api/recipe/recipes/" + recipeId);
       console.log("Response status:", response.status);
       const data = await response.json();
       console.log("Data received:", data);
