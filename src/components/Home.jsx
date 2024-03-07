@@ -15,9 +15,9 @@ const [error, setError] = useState(null)
 
        try{
         console.log(import.meta.env.VITE_API_BASE_URL);
-        const link = import.meta.env.VITE_API_BASE_URL;
+        const link = `${import.meta.env.VITE_API_BASE_URL}recipe/all`;
         console.log(link);
-        const req = await fetch(`&{link}recipe/all`,{
+        const req = await fetch(link,{
             credentials: 'include'
         });
         const data = await req.json();
