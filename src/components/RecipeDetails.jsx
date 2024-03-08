@@ -6,12 +6,13 @@ const DetailPage = () => {
   const [recipe, setRecipe] = useState({});
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
+  const detailLink = import.meta.env.VITE_API_BASE_URL + 'recipe/recipes/'
 
   console.log(recipeId);
 
   const fetchRecipe = async () => {
     try {
-      const response = await fetch("https://cook-book-server.onrender.com/api/recipe/recipes/" + recipeId);
+      const response = await fetch(detailLink + recipeId);
       console.log("Response status:", response.status);
       const data = await response.json();
       console.log("Data received:", data);
