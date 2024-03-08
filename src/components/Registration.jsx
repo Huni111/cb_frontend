@@ -12,6 +12,8 @@ const RegistrationPage = () => {
     confirmPassword: '',
   });
 
+  const regLink = import.meta.env.VITE_API_BASE_URL + 'user'
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData(() => ({
@@ -28,7 +30,7 @@ const RegistrationPage = () => {
     // Perform registration logic here, like sending data to the server
     try {
       if (formData.password === formData.confirmPassword) {
-        const req = await fetch(import.meta.env.VITE_API_ENDPOINT_REG, {
+        const req = await fetch(regLink, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json'

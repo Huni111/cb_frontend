@@ -9,13 +9,14 @@ const LogoutPage = () => {
   const [success, setSuccess] = useState(undefined);
   const [error, setError] = useState(null);
   const { clearUser } = useContext(UserContext)
+  const logoutLink = import.meta.env.VITE_API_BASE_URL + "user/logout";
 
   const handleLogout = async () => {
     try {
 
 
       // Make the logout request
-      const req = await fetch(import.meta.env.VITE_API_ENDPOINT_LOGOUT, {
+      const req = await fetch(logoutLink, {
         method: 'POST',
         credentials: 'include',
       });
