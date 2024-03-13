@@ -1,16 +1,18 @@
 import React, { useState } from "react";
-import { json } from "react-router-dom";
+
+import blankFood from "../../images/blankfoodimage.png"
 
 const UploadForm = () => {
 
   const [succes, setSucces] = useState(false);
   const [error, setError] = useState(null);
-  const [loading, setLoading] = useState(false)
+  const [loading, setLoading] = useState(false);
+  const link = import.meta.env.VITE_API_BASE_URL;
 
   const [formData, setFormData] = useState({
     recipeName: "",
     language: "",
-    ingList: ["so", "bors", "paprika"],
+    ingList: [],
     instructions: "",
     imgLink: "",
     cookingTime: "",
@@ -27,7 +29,7 @@ const UploadForm = () => {
     category: formData.category,
     ingredients: formData.ingList,
     instructions: formData.instructions,
-    image_link: formData.imgLink,
+    image_link: formData.imgLink !== "" ? formData.imgLink : blankFood,
     preparation_time: formData.cookingTime,
   }
 
@@ -78,18 +80,18 @@ const UploadForm = () => {
 
     try{
 
-      const res =await fetch(import.meta.env.VITE_API_ENDPOINT_CREATE, {
+      const res =await fetch(link + "recipe/new", {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
         },
         credentials: 'include',
-        body: JSON.stringify({recipe})
+        body: JSON.stringify(recipe)
       });
       const data = await res.json();
 
       if(!res.ok){
-        throw new Error(`Error in login: ${data.message}`)
+        throw new Error(`Error in save: ${data.message}`)
         
       }else{
         console.log('Loged in!')
@@ -99,8 +101,9 @@ const UploadForm = () => {
       }
 
     }catch(err) {
-      setError(err)
-      throw new Error('Failed saving data!');
+      setError(err.message)
+      setSucces(false);
+      setLoading(false)
     }
 
 
@@ -115,13 +118,13 @@ const UploadForm = () => {
     <>
       <main>
         <div style={styles.container}>
-          <h1 style={styles.header}>UJ RECEPT</h1>
+          <h1 style={styles.header}> ÚJ RECEPT</h1>
           {succes && <h3 style={{ ...styles.header, color: 'green' }}>Mentve!</h3>}
           {loading && <h3 style={{ ...styles.header, color: '#F05941' }}>Folyamatban...!</h3>}
-          {error && <h3 style={{ ...styles.header, color: 'red' }}>Hibas a mentes soran!</h3>}
+          {error && <h3 style={{ ...styles.header, color: 'red' }}>Hiba a mentés során!</h3>}
 
           <form style={styles.form} onSubmit={handleSubmit}>
-            <label style={styles.label}>Uj recept:</label>
+            <label style={styles.label}>Új recept:</label>
             <input
               style={styles.input}
               type="text"
@@ -132,21 +135,21 @@ const UploadForm = () => {
             />
             <label style={styles.label} >Nyelv:</label>
             <select style={styles.select} name="language" value={formData.language} onChange={handleInputChange}>
-              <option value=''>Milyen nyelven irod a receptet?</option>
+              <option value=''>Milyen nyelven írod a receptet?</option>
               <option value="English">English</option>
               <option value="Magyar">Magyar</option>
-              <option value="Romana">Romana</option>
+              <option value="Romana">Româna</option>
             </select>
             <br />
-            <label style={styles.label}>Hozzavalok:</label>
+            <label style={styles.label}>Hozzávalok:</label>
             {formData.ingList.length !== 0 ? (
               formData.ingList.map((ing, id) => <li key={id}>{ing}</li>)
             ) : (
-              <li>Nincs hozza adva alapanyag!</li>
+              <li>Nincs hozzá adva alapanyag!</li>
             )}
             <input
               style={styles.input}
-              placeholder="uj hozzavalo?"
+              placeholder="új hozzávaló?"
               type="text"
               onKeyDown={handleEnter}
               name="storredIng"
@@ -155,26 +158,26 @@ const UploadForm = () => {
             />
             <div style={styles.listbutton}>
               <button style={styles.button} onClick={handleAdd}>
-                Hozza ad!
+                Hozzá ad!
               </button>
               <button style={styles.button} onClick={deleteIng}>
-                Utolso torlese!
+                Utolsó törlése!
               </button>
             </div>
             <br />
-            <label style={styles.label}>Elkeszites:</label>
+            <label style={styles.label}>Elkészítés:</label>
             <br />
             <textarea
               style={styles.input}
               onChange={handleInputChange}
               rows="10"
               cols="80"
-              placeholder="Ird le reszletesen hogy kell..."
+              placeholder="Írd le részletesen hogy kell..."
               name="instructions"
               value={formData.instructions}
             ></textarea>
             <br />
-            <label style={styles.label}>Kep linkje:</label>
+            <label style={styles.label}>Kép linkje:</label>
             <input
               style={styles.input}
               onChange={handleInputChange}
@@ -184,7 +187,7 @@ const UploadForm = () => {
               value={formData.imgLink}
             />
             <br />
-            <label style={styles.label}>Elkeszites idotartama (perc):</label>
+            <label style={styles.label}>Elkészítési időtartama (perc):</label>
             <input
               style={styles.input}
               onChange={handleInputChange}
@@ -193,28 +196,28 @@ const UploadForm = () => {
               value={formData.cookingTime}
             />
             <br />
-            <label style={styles.label} >Etkezes:</label>
+            <label style={styles.label} >Étkezés:</label>
             <select style={styles.select} name="mealtime" value={formData.mealtime} onChange={handleInputChange}>
-              <option value="Kivalaszt">Kivalaszt</option>
-              <option value="Eloetel">Eloetel</option>
-              <option value="Foetel">Foetel</option>
+              <option value="Kivalaszt">Kiválaszt</option>
+              <option value="Eloetel">Előétel</option>
+              <option value="Foetel">Főétel</option>
               <option value="Desszert">Desszert</option>
               <option value="Leves">Leves</option>
             </select>
             <br />
-            <label style={styles.label} >Katergoria:</label>
+            <label style={styles.label} >Kategória:</label>
             <select style={styles.select} name="category" value={formData.category} onChange={handleInputChange}>
-              <option value="Kivalaszt">Kivalaszt</option>
-              <option value="Hagyomanyos">Hagyomanyos</option>
-              <option value="Inyenc">Inyenc</option>
-              <option value="Vegetarianus">Vegetarianus</option>
-              <option value="Vegan">Vegan</option>
-              <option value="Salata">Salata</option>
+              <option value="Kivalaszt">Kiválaszt</option>
+              <option value="Hagyomanyos">Hagyományos</option>
+              <option value="Inyenc">Ínyenc</option>
+              <option value="Vegetarianus">Vegetáriánus</option>
+              <option value="Vegan">Vegán</option>
+              <option value="Salata">Saláta</option>
             </select>
             <br />
             <div style={styles.listbutton}>
               <button style={styles.button} type="submit">
-                Mentes!
+              Mentés!
               </button>
             </div>
             <br />
