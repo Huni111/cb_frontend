@@ -9,7 +9,9 @@ import LoginPage from "./components/Login";
 import LogoutPage from "./components/LogoutPage";
 import DetailPage from "./components/RecipeDetails";
 import UploadForm from "./components/RcipeUpload";
+import MyRecipeList from "./components/MyRecipes";
 import { UserProvider } from "./contexts/userContext";
+import MyDetailPage from "./components/MyDetails";
 // import RecipeForm from "./components/RcipeUpload";
 
 
@@ -19,12 +21,13 @@ const router = createBrowserRouter([
         element: <RootL />,
         children: [
             {path: '/', element: <Home />},
-           // {path: '/search', element: <UserSearch />},
             {path: '/registration', element: <RegistrationPage />},
             {path: '/login', element: <LoginPage />},
             {path: '/logout', element: <LogoutPage />},
             {path: '/details/:recipeId', element: <DetailPage />},
-            {path: '/upload', element: <UploadForm />}   
+            {path: '/upload', element: <UploadForm />},
+            {path: '/myrec', element: <MyRecipeList />},
+            {path: '/mydetails/:recipeId', element: <MyDetailPage/>}
         ]
     }
 ])

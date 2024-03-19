@@ -10,7 +10,7 @@ const Header = () => {
        <Link to='/'> <h1 className="text-7xl text-center font-bold cim">Cook-Book</h1></Link>
         <nav>
             <ul className="menuItems">
-                <li><Link to="/search">Sajat receptjeim</Link></li>
+                <li><Link to="/myrec">Sajat receptjeim</Link></li>
                 <li><Link to="/upload">Uj recept feltoltes</Link></li>
                 <li><Link to="/login">Bejelentkezes</Link></li>
                 <li><Link to="/logout">Kijelentkezes</Link></li>

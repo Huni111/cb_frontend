@@ -1,4 +1,4 @@
-import React, {createContext, useState, useEffect} from 'react';
+import React, {createContext, useState, useEffect, useRef} from 'react';
 
 
 const UserContext = createContext();
@@ -6,6 +6,7 @@ const UserContext = createContext();
 const UserProvider = ({children}) => {
 
     const [user, setUser] = useState({});
+    const logoutTimer = useRef(null);
 
 
     useEffect(() => {
@@ -14,17 +15,41 @@ const UserProvider = ({children}) => {
         if (storedUser) {
           setUser(JSON.parse(storedUser));
         }
+
+          return  ()=> {
+            if(logoutTimer.current){
+              clearTimeout(logoutTimer.current);
+            }
+          };
+        
       }, []);
 
       const loginUser = (userData) => {
         localStorage.setItem("user", JSON.stringify(userData));
         setUser(userData)
+
+
+        if(logoutTimer.current){
+        clearTimeout(logoutTimer.current);
+        }
+
+         logoutTimer.current = setTimeout(() => {
+          clearUser();
+      }, 24 * 60 * 60 * 1000);
+
+
       }
 
 
     const clearUser = () => {
-        setUser({})
-    }
+        setUser({});
+        localStorage.removeItem("user");
+
+        if(logoutTimer.current) {
+          clearTimeout(logoutTimer.current);
+        }
+
+    };
 
 
 

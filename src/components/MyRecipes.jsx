@@ -1,18 +1,23 @@
-import React, {useEffect, useState} from "react";
-import List from "./List";
+import React, {useEffect, useState, useContext} from "react";
+import MyList from "./MyList.jsx";
+import { UserContext } from "../contexts/userContext.jsx";
 
 
-const Home = () => {
+const MyRecipeList = () => {
 
 const [recipe, setRecipe] = useState();
 const [error, setError] = useState(null)
 const [loading, setLoading] = useState(true);
-const fetchAll = import.meta.env.VITE_API_BASE_URL + 'recipe/all'
+const {user} = useContext(UserContext);
+const fetchRecipes = import.meta.env.VITE_API_BASE_URL + "recipe/my_recipes/" + user._id;
+
+
 
     const fetchData = async() => {
 
+        console.log(user._id)
        try{
-        const req = await fetch(fetchAll,{
+        const req = await fetch(fetchRecipes,{
             credentials: 'include'
         });
         const data = await req.json();
@@ -43,10 +48,10 @@ useEffect(() => {
 
 const createList = (rec) => {
 
-
+   
     return(
         
-        <List 
+        <MyList 
             rid={rec._id}
             name={rec.name}
             img={rec.image_link}
@@ -75,7 +80,7 @@ const createList = (rec) => {
 
                     <div style={{ height: '30rem' }}>
                         <h2 style={{ color: '#F05941', fontSize: 'large', fontWeight: 'bold', margin: '5rem' }}>
-                            Nincsenek elerheto receptek!
+                            Nincsenek elérhető saját receptek!
                         </h2>
                     </div>
                 )}
@@ -85,4 +90,4 @@ const createList = (rec) => {
 }
 
 
-export default Home;
+export default MyRecipeList;
