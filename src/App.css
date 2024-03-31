@@ -2,16 +2,16 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
- }
- 
- #root {
+}
+
+#root {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
   margin: 0;
 
 
- }
+}
 
 
 /* HEADER */
@@ -85,19 +85,22 @@ main {
   flex-wrap: wrap;
   justify-content: space-around;
   padding: 20px;
-  background-color: #FECDA6; /* Light Peach color */  
-  width: 100%; 
-  height: 100%; 
+  background-color: #FECDA6;
+  /* Light Peach color */
+  width: 100%;
+  height: 100%;
   overflow: auto;
-  
+
 }
 
 
 
 /* Recipe tile styles */
 .recipe {
-  background-color: #FECDA6; /* Light Peach color */
-  border: 1px solid #A9A9A9; /* Dark Gray color */
+  background-color: #FECDA6;
+  /* Light Peach color */
+  border: 1px solid #A9A9A9;
+  /* Dark Gray color */
   border-radius: 10%;
   padding: 15px;
   margin: 2rem 2rem;
@@ -112,22 +115,24 @@ main {
   padding-bottom: 22%;
   transition: transform 0.3s ease-in-out;
   cursor: pointer;
-  box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
+  box-shadow: 0 19px 38px rgba(0, 0, 0, 0.30), 0 15px 12px rgba(0, 0, 0, 0.22);
   flex-grow: initial;
-  
+
 }
 
 .recipe:hover {
   transform: scale(1.03);
 }
+
 .recipe div {
-  height: 100%; /* Make the div inside the link take up the full height */
+  height: 100%;
+  /* Make the div inside the link take up the full height */
 }
 
 .recipe img {
   width: 100%;
   height: 100%;
- 
+
   transition: transform 0.3s ease-in-out;
 }
 
@@ -141,22 +146,24 @@ main {
   color: #F05941;
   margin: 0;
 }
+
 .recipe:hover .recipe-name-corner {
   opacity: 0;
-  
+
 }
 
 
 .recipe-name {
   margin: 0;
-  color: #F05941; 
+  color: #F05941;
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   opacity: 0;
   transition: opacity 0.3s ease-in-out;
-  background-color: rgba(255, 255, 255, 0.7); /* White with 70% opacity */
+  background-color: rgba(255, 255, 255, 0.7);
+  /* White with 70% opacity */
   padding: 10px;
 }
 
@@ -169,20 +176,21 @@ main {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
- }
- .wrap-detail {
+}
+
+.wrap-detail {
   width: 100%;
   background-color: #FECDA6;
- }
+}
 
- .detail-block {
+.detail-block {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   flex-wrap: wrap;
   flex-grow: 0.6;
   width: 80%;
-  margin:auto;
+  margin: auto;
 
 }
 
@@ -194,18 +202,20 @@ main {
   flex-direction: column;
   align-content: space-around;
   flex-shrink: 0.8;
-} 
+}
 
-.detail-section h2  {
+.detail-section h2 {
   font-size: x-large;
   font-weight: bold;
 
-} 
+}
+
 .detail-section h3 {
   font-size: large;
   font-weight: bold;
 
 }
+
 .recipe-title {
   margin-left: 3rem;
   font-size: xx-large;
@@ -219,23 +229,29 @@ main {
 
 @media (max-width: 700px) {
   .detail-section {
-    width: 100%; /* Make each section take up the full width on narrow screens */
+    width: 100%;
+    /* Make each section take up the full width on narrow screens */
   }
 }
+
 /* RECIPE DETAIL PAGE */
 
 /* DELETE POP-UP WINDOW */
 .delete-popup {
-  position: fixed; /* Keep the popup on top of other content */
+  position: fixed;
+  /* Keep the popup on top of other content */
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%); /* Center the popup */
+  transform: translate(-50%, -50%);
+  /* Center the popup */
   background-color: #FECDA6;
   padding: 20px;
   border: 1px solid #FECDA6;
   border-radius: 5px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Add a slight shadow */
-  z-index: 100; /* Ensure the popup is on top of other elements */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  /* Add a slight shadow */
+  z-index: 100;
+  /* Ensure the popup is on top of other elements */
 }
 
 .delete-popup p {
@@ -264,10 +280,13 @@ main {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.401); /* Set opacity for dimming effect */
+  background-color: rgba(0, 0, 0, 0.401);
+  /* Set opacity for dimming effect */
   display: flex;
-  justify-content: center; /* Center the popup horizontally */
-  align-items: center; /* Center the popup vertically */
+  justify-content: center;
+  /* Center the popup horizontally */
+  align-items: center;
+  /* Center the popup vertically */
   z-index: 999;
 }
 
@@ -283,12 +302,12 @@ main {
   color: #F05941;
 }
 
-.delete-icon, edit-icon {
+.delete-icon,
+edit-icon {
   color: #F05941;
   margin-left: 1rem;
-  font-size: 2rem !important; 
+  font-size: 2rem !important;
 }
-
 
 /* DELETE POP-UP WINDOW */
 
@@ -298,14 +317,16 @@ main {
 /* FOOTER */
 
 footer {
-  background-color: #A9A9A9; /* Dark Gray color */
+  background-color: #A9A9A9;
+  /* Dark Gray color */
   color: #fff;
   padding: 10px;
   text-align: center;
   height: 100%;
   margin-top: auto;
   position: relative;
-  height: 100%; /* Make the footer take up the full height */
+  height: 100%;
+  /* Make the footer take up the full height */
 }
 
 .social-media-icons a {
@@ -320,3 +341,81 @@ h5,
 h6 {
   margin: 5px 0;
 }
+
+/* FORM STYLES */
+
+.form_container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  height: 100%;
+}
+
+.form_header {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.form_form {
+  display: flex;
+  flex-direction: column;
+  width: 30rem;
+}
+
+.form_loginform {
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+}
+
+.form_label {
+  margin-bottom: 0;
+}
+
+.form_input {
+  padding: 8px;
+  margin-bottom: 0.5rem;
+}
+
+.form_button {
+  background-color: #3498db !important;
+  color: white;
+  padding: 10px;
+  cursor: pointer;
+  width: 15rem;
+  margin: 0 1rem;
+}
+
+.form_buttonLogin {
+  background-color: #3498db !important;
+  color: white;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.form_main {
+  height: 1000px;
+}
+
+.form_listbutton {
+  display: flex;
+  justify-content: space-around;
+}
+
+.form_select {
+  padding: 8px;
+  margin-bottom: 0.5rem;
+}
+
+
+/* FORM STYLES */
+
+
+/* MEDIA QUERIES */
+@media only screen and (max-width: 800px) {
+  body {
+    background-color: lightblue;
+  }
+}
+/* MEDIA QUERIES */

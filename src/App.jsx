@@ -12,6 +12,7 @@ import UploadForm from "./components/RcipeUpload";
 import MyRecipeList from "./components/MyRecipes";
 import { UserProvider } from "./contexts/userContext";
 import MyDetailPage from "./components/MyDetails";
+import UpdateForm from "./components/MyUpdate";
 // import RecipeForm from "./components/RcipeUpload";
 
 
@@ -27,7 +28,8 @@ const router = createBrowserRouter([
             {path: '/details/:recipeId', element: <DetailPage />},
             {path: '/upload', element: <UploadForm />},
             {path: '/myrec', element: <MyRecipeList />},
-            {path: '/mydetails/:recipeId', element: <MyDetailPage/>}
+            {path: '/mydetails/:recipeId', element: <MyDetailPage/>},
+            {path: '/update/:recipeId', element: <UpdateForm />}
         ]
     }
 ])

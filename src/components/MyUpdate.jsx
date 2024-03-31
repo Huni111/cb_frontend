@@ -1,9 +1,12 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 
 import blankFood from "../../images/blankfoodimage.png"
+import { dark } from "@mui/material/styles/createPalette";
 
-const UploadForm = () => {
+const UpdateForm = () => {
 
+  const { recipeId } = useParams();
   const [succes, setSucces] = useState(false);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
@@ -80,8 +83,8 @@ const UploadForm = () => {
 
     try {
 
-      const res = await fetch(link + "recipe/new", {
-        method: 'POST',
+      const res = await fetch(`${link}recipe/update_one/${recipeId}`, {
+        method: 'PUT',
         headers: {
           'Content-Type': 'application/json'
         },
@@ -105,11 +108,50 @@ const UploadForm = () => {
       setSucces(false);
       setLoading(false)
     }
+  }
+
+
+  const fetchBeforeUpdate = async () => {
+
+    try {
+      const res = await fetch(`${link}recipe/recipes/${recipeId}`, {
+        method: 'GET',
+      })
+      const data = await res.json(res);
+
+      if (res.ok) {
+        setFormData({
+          recipeName: data.name,
+          language: data.language,
+          ingList: data.ingredients,
+          instructions: data.instructions,
+          imgLink: data.image_link,
+          cookingTime: data.cookingTime,
+          mealtime: data.meal_time,
+          category: data.category,
+          storredIng: ''
+
+        })
+      } else {
+        throw new Error('data fetch failed!')
+      }
+
+    } catch (err) {
+      setError(err)
+      console.log(err.message)
+    }
+
 
 
 
 
   }
+
+  useEffect(() => {
+    fetchBeforeUpdate()
+  }, [])
+
+
 
 
 
@@ -117,35 +159,38 @@ const UploadForm = () => {
   return (
     <>
       <main>
-        <div className="form_container">
-          <h1 className="form_header"> ÚJ RECEPT</h1>
+        <div className='form_container'>
+          <h1 style={styles.header}> RECEPT SZERKESZTÉSE</h1>
+          {succes && <h3 style={{ ...styles.header, color: 'green' }}>Mentve!</h3>}
+          {loading && <h3 style={{ ...styles.header, color: '#F05941' }}>Folyamatban...!</h3>}
+          {error && <h3 style={{ ...styles.header, color: 'red' }}>Hiba a mentés során!</h3>}
 
-          <form className="form_form" onSubmit={handleSubmit}>
-            <label className="form_label">Új recept:</label>
+          <form className='form_form' onSubmit={handleSubmit}>
+            <label className='form_label'>Új recept:</label>
             <input
-              className="form_input"
+              className='form_input'
               type="text"
               placeholder="add meg az uj recept nevet!"
               name="recipeName"
               value={formData.recipeName}
               onChange={handleInputChange}
             />
-            <label className="form_label" >Nyelv:</label>
-            <select className="form_select" name="language" value={formData.language} onChange={handleInputChange}>
+            <label className='form_label' >Nyelv:</label>
+            <select className='form_select' name="language" value={formData.language} onChange={handleInputChange}>
               <option value=''>Milyen nyelven írod a receptet?</option>
               <option value="English">English</option>
               <option value="Magyar">Magyar</option>
               <option value="Romana">Româna</option>
             </select>
             <br />
-            <label className="form_label">Hozzávalok:</label>
+            <label className='form_label'>Hozzávalok:</label>
             {formData.ingList.length !== 0 ? (
               formData.ingList.map((ing, id) => <li key={id}>{ing}</li>)
             ) : (
               <li>Nincs hozzá adva alapanyag!</li>
             )}
             <input
-              className="form_input"
+              className='form_input'
               placeholder="új hozzávaló?"
               type="text"
               onKeyDown={handleEnter}
@@ -153,19 +198,19 @@ const UploadForm = () => {
               value={formData.storredIng}
               onChange={handleInputChange}
             />
-            <div className="form_listbutton">
-              <button className="form_button" onClick={handleAdd}>
+            <div className='form_listbutton'>
+              <button className='form_button' onClick={handleAdd}>
                 Hozzá ad!
               </button>
-              <button className="form_button" onClick={deleteIng}>
+              <button className='form_button' onClick={deleteIng}>
                 Utolsó törlése!
               </button>
             </div>
             <br />
-            <label className="form_label">Elkészítés:</label>
+            <label className='form_label'>Elkészítés:</label>
             <br />
             <textarea
-              className="form_input"
+              className='form_input'
               onChange={handleInputChange}
               rows="10"
               cols="80"
@@ -174,9 +219,9 @@ const UploadForm = () => {
               value={formData.instructions}
             ></textarea>
             <br />
-            <label className="form_label">Kép linkje:</label>
+            <label className='form_label'>Kép linkje:</label>
             <input
-              className="form_input"
+              className='form_input'
               onChange={handleInputChange}
               type="text"
               placeholder="adj meg URL-t"
@@ -184,17 +229,17 @@ const UploadForm = () => {
               value={formData.imgLink}
             />
             <br />
-            <label className="form_label">Elkészítési időtartama (perc):</label>
+            <label className='form_label'>Elkészítési időtartama (perc):</label>
             <input
-              className="form_input"
+              className='form_input'
               onChange={handleInputChange}
               type="number"
               name="cookingTime"
               value={formData.cookingTime}
             />
             <br />
-            <label className="form_label" >Étkezés:</label>
-            <select className="form_select" name="mealtime" value={formData.mealtime} onChange={handleInputChange}>
+            <label className='form_label' >Étkezés:</label>
+            <select className='form_select' name="mealtime" value={formData.mealtime} onChange={handleInputChange}>
               <option value="Kivalaszt">Kiválaszt</option>
               <option value="Eloetel">Előétel</option>
               <option value="Foetel">Főétel</option>
@@ -202,8 +247,8 @@ const UploadForm = () => {
               <option value="Leves">Leves</option>
             </select>
             <br />
-            <label className="form_label" >Kategória:</label>
-            <select className="form_select" name="category" value={formData.category} onChange={handleInputChange}>
+            <label className='form_label' >Kategória:</label>
+            <select className='form_select' name="category" value={formData.category} onChange={handleInputChange}>
               <option value="Kivalaszt">Kiválaszt</option>
               <option value="Hagyomanyos">Hagyományos</option>
               <option value="Inyenc">Ínyenc</option>
@@ -212,12 +257,7 @@ const UploadForm = () => {
               <option value="Salata">Saláta</option>
             </select>
             <br />
-            {succes && <h3 style={{ ...styles.header, color: 'green' }}>Mentve!</h3>}
-            {loading && <h3 style={{ ...styles.header, color: '#F05941' }}>Folyamatban...!</h3>}
-            {error && <h3 style={{ ...styles.header, color: 'red' }}>Hiba a mentés során!</h3>}
-
-            <div className="form_listbutton">
-
+            <div className='form_listbutton'>
               <button className='form_button' type="submit">
                 Mentés!
               </button>
@@ -230,13 +270,51 @@ const UploadForm = () => {
   );
 };
 
+
 const styles = {
+  container: {
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    padding: '20px',
+    height: "100%"
+  },
   header: {
     fontSize: '24px',
     marginBottom: '20px',
-  }
+  },
+  form: {
+    display: 'flex',
+    flexDirection: 'column',
+    width: '30rem',
+  },
+  label: {
+    marginBottom: '0',
+  },
+  input: {
+    padding: '8px',
+    marginBottom: '0.5rem',
+  },
+  button: {
+    backgroundColor: '#3498db',
+    color: 'white',
+    padding: '10px',
+    cursor: 'pointer',
+    width: '15rem',
+    margin: '0 1rem'
+  },
+  main: {
+    height: '1000px'
+  },
+  listbutton: {
+    display: 'flex',
+    justifyContent: 'space-around'
+  },
+  select: {
+    padding: '8px',
+    marginBottom: '0.5rem',
+  },
+
 }
 
-
-
-export default UploadForm
+export default UpdateForm

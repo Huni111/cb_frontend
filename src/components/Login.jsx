@@ -46,7 +46,7 @@ const LoginPage = () => {
         throw new Error(`Error in login: ${data.message}`);
 
       } else {
-        console.log('Loged in!')
+        
         setLoading(false);
         setSucces(true);
         setError(null);
@@ -76,20 +76,21 @@ const LoginPage = () => {
 
   return (
     <main>
-      <div style={styles.container}>
+      <div className='form_container'>
+      <h2 className='form_header'>Bejelentkezés</h2>
         {succes && <h3 style={{ ...styles.header, color: 'green' }}>Bejelentkezve!</h3>}
         {loading && <h3 style={{ ...styles.header, color: '#F05941' }}>Folyamatban...!</h3>}
         {error && <h3 style={{ ...styles.header, color: 'red' }}>Hibas jelszo vagy email cim!</h3>}
 
 
 
-        <h2 style={styles.header}>Login Page</h2>
-        <form style={styles.form} onSubmit={handleSubmit}>
-          <label style={styles.label} htmlFor="Email">
+        
+        <form className='form_loginform' onSubmit={handleSubmit}>
+          <label className='form_label' htmlFor="Email">
             Email:
           </label>
           <input
-            style={styles.input}
+            className='form_input'
             type="text"
             id="Email"
             name="Email"
@@ -98,11 +99,11 @@ const LoginPage = () => {
             required
           />
 
-          <label style={styles.label} htmlFor="password">
-            Password:
+          <label className='form_label' htmlFor="password">
+            Jelszó:
           </label>
           <input
-            style={styles.input}
+            className='form_input'
             type="password"
             id="password"
             name="password"
@@ -111,7 +112,7 @@ const LoginPage = () => {
             required
           />
 
-          <button style={styles.button} type="submit">
+          <button className='form_buttonLogin' type="submit">
             Login
           </button>
         </form>
@@ -121,35 +122,12 @@ const LoginPage = () => {
 };
 
 const styles = {
-  container: {
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-    padding: '20px',
-    height: "30rem"
-  },
+ 
   header: {
     fontSize: '24px',
     marginBottom: '20px',
-  },
-  form: {
-    display: 'flex',
-    flexDirection: 'column',
-    width: '300px',
-  },
-  label: {
-    marginBottom: '8px',
-  },
-  input: {
-    padding: '8px',
-    marginBottom: '16px',
-  },
-  button: {
-    backgroundColor: '#3498db',
-    color: 'white',
-    padding: '10px',
-    cursor: 'pointer',
-  },
+  }
+  
 };
 
 export default LoginPage;

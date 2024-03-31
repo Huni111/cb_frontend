@@ -15,12 +15,13 @@ const fetchRecipes = import.meta.env.VITE_API_BASE_URL + "recipe/my_recipes/" + 
 
     const fetchData = async() => {
 
-        console.log(user._id)
+        
        try{
         const req = await fetch(fetchRecipes,{
             credentials: 'include'
         });
         const data = await req.json();
+        
         if(!req.ok){
             throw new Error(data.error)
         }

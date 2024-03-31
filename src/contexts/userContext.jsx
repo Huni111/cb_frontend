@@ -12,6 +12,7 @@ const UserProvider = ({children}) => {
     useEffect(() => {
         // Check if user data is in localStorage on component mount
         const storedUser = localStorage.getItem("user");
+
         if (storedUser) {
           setUser(JSON.parse(storedUser));
         }
@@ -35,7 +36,7 @@ const UserProvider = ({children}) => {
 
          logoutTimer.current = setTimeout(() => {
           clearUser();
-      }, 24 * 60 * 60 * 1000);
+      },60 * 60 * 1000);
 
 
       }

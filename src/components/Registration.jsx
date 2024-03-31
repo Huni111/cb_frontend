@@ -89,19 +89,19 @@ const RegistrationPage = () => {
   return (
     <main>
 
-      <div style={styles.container}>
+      <div className='form_container'>
         {!matchPasswords && <h3 style={{ ...styles.header, color: 'red' }}>Jelszavak nem egyeznek!</h3>}
         {succes && <h3 style={{ ...styles.header, color: 'green' }}>Sikeres regisztracio! Jelentezz be!</h3>}
         {loading && <h3 style={{ ...styles.header, color: '#F05941' }}>Folyamatban...!</h3>}
         {error && <h3 style={{ ...styles.header, color: 'red' }}>Ez az email mar hasznalva volt!</h3>}
 
         <h2 style={styles.header}>Regisztracio!</h2>
-        <form style={styles.form} onSubmit={handleSubmit}>
-          <label style={styles.label} htmlFor="username">
+        <form className='form_loginform' onSubmit={handleSubmit}>
+          <label className='form_label' htmlFor="username">
             Felhasznalo nev:
           </label>
           <input
-            style={styles.input}
+            className='form_input'
             type="text"
             id="username"
             name="username"
@@ -110,11 +110,11 @@ const RegistrationPage = () => {
             required
           />
 
-          <label style={styles.label} htmlFor="email">
+          <label className='form_label' htmlFor="email">
             Email:
           </label>
           <input
-            style={styles.input}
+            className='form_input'
             type="email"
             id="email"
             name="email"
@@ -123,11 +123,11 @@ const RegistrationPage = () => {
             required
           />
 
-          <label style={styles.label} htmlFor="password">
+          <label className='form_label' htmlFor="password">
             Jelszo:
           </label>
           <input
-            style={styles.input}
+            className='form_input'
             type="password"
             id="password"
             name="password"
@@ -136,11 +136,11 @@ const RegistrationPage = () => {
             required
           />
 
-          <label style={styles.label} htmlFor="confirmPassword">
+          <label className='form_label' htmlFor="confirmPassword">
             Jelszo megerositese:
           </label>
           <input
-            style={styles.input}
+            className='form_input'
             type="password"
             id="confirmPassword"
             name="confirmPassword"
@@ -149,7 +149,7 @@ const RegistrationPage = () => {
             required
           />
 
-          <button style={styles.button} type="submit">
+          <button className='form_buttonLogin' type="submit">
             Regisztracio
           </button>
         </form>

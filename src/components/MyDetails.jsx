@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import DeleteIcon from '@mui/icons-material/Delete';
+import BorderColorIcon from '@mui/icons-material/BorderColor';
 import { Link } from "react-router-dom";
 
 const MyDetailPage = () => {
@@ -13,14 +14,14 @@ const MyDetailPage = () => {
     const deleteLink = import.meta.env.VITE_API_BASE_URL + 'recipe/delete/' + recipeId
     const detailLink = import.meta.env.VITE_API_BASE_URL + 'recipe/recipes/'
 
-    console.log(recipeId);
+    
 
     const fetchRecipe = async () => {
         try {
             const response = await fetch(detailLink + recipeId);
-            console.log("Response status:", response.status);
+            
             const data = await response.json();
-            console.log("Data received:", data);
+            
             setRecipe(data);
             setError(null);
             setLoading(false);
@@ -86,7 +87,22 @@ const MyDetailPage = () => {
             ) : (
                 <div className="wrap-detail">
                     <div className="detail-block">
-                        <h1 className="recipe-title">{title}<button onClick={handlePopUp}><DeleteIcon className="delete-icon" /></button> </h1>
+
+                        <h1 className="recipe-title">
+                        {title}
+
+                        <button onClick={handlePopUp}>
+                        <DeleteIcon className="delete-icon" />
+                        </button> 
+
+                        <Link to={`/update/${recipeId}`} >
+                        <BorderColorIcon className="delete-icon" />
+                        </Link> 
+
+
+                        </h1>
+
+
                     </div>
                     <div className="detail-block">
                         <div className="detail-section">
