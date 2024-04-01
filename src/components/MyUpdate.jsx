@@ -71,9 +71,8 @@ const UpdateForm = () => {
     formData.ingList.length > 0 &&
       setFormData((prevData) => ({
         ...prevData,
-        ingList: prevData.ingList.filter(
-          (ing) => prevData.ingList.indexOf(ing) !== prevData.ingList.length - 1
-        ),
+        ingList: prevData.ingList.slice(0, -1)
+
       }));
   };
 
@@ -161,9 +160,6 @@ const UpdateForm = () => {
       <main>
         <div className='form_container'>
           <h1 style={styles.header}> RECEPT SZERKESZTÉSE</h1>
-          {succes && <h3 style={{ ...styles.header, color: 'green' }}>Mentve!</h3>}
-          {loading && <h3 style={{ ...styles.header, color: '#F05941' }}>Folyamatban...!</h3>}
-          {error && <h3 style={{ ...styles.header, color: 'red' }}>Hiba a mentés során!</h3>}
 
           <form className='form_form' onSubmit={handleSubmit}>
             <label className='form_label'>Új recept:</label>
@@ -257,6 +253,10 @@ const UpdateForm = () => {
               <option value="Salata">Saláta</option>
             </select>
             <br />
+            {succes && <h3 style={{ ...styles.header, color: 'green' }}>Mentve!</h3>}
+            {loading && <h3 style={{ ...styles.header, color: '#F05941' }}>Folyamatban...!</h3>}
+            {error && <h3 style={{ ...styles.header, color: 'red' }}>Hiba a mentés során!</h3>}
+
             <div className='form_listbutton'>
               <button className='form_button' type="submit">
                 Mentés!

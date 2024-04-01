@@ -24,12 +24,12 @@ const LogoutPage = () => {
       clearUser();
 
       if (!req.ok) {
-        console.log(data);
+        
         throw new Error(data);
       }
 
       setSuccess(true);
-      console.log(data);
+      
     } catch (err) {
       setError(err);
       console.log("ERROR: " + err);
