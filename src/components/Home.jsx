@@ -5,6 +5,7 @@ import List from "./List";
 const Home = () => {
 
 const [recipe, setRecipe] = useState();
+const [query, setQuery] = useState('');
 const [error, setError] = useState(null)
 const [loading, setLoading] = useState(true);
 const fetchAll = import.meta.env.VITE_API_BASE_URL + 'recipe/all'
@@ -40,6 +41,17 @@ useEffect(() => {
     fetchData()
 },[])
 
+const searchType = (e) => {
+    setQuery(e.target.value);
+    handleFilter();
+}
+
+const handleFilter = () => {
+    query.length > 0 ? setRecipe(recipe.filter(rec=> {
+        return rec.name.includes(query)
+    })) : fetchData()
+}
+
 
 const createList = (rec) => {
 
@@ -60,6 +72,9 @@ const createList = (rec) => {
 
     return (
         <>
+        <div className="search_bar">
+                   <h3>Keresés:</h3><input onChange={searchType} className="search_input" type="search"></input>
+            </div>
             <main>
                 {loading ? (
                     <div style={{ height: '30rem' }}>

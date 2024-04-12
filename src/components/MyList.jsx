@@ -13,7 +13,7 @@ const MyList = (props) => {
     return (
         <>
 
-            <Link to={`/mydetails/${props.rid}`} className="recipe"
+            <Link to={`/app/mydetails/${props.rid}`} className="recipe"
                 style={{ backgroundImage: `url(${props.img})` }}>
                 <div>
                     <h3  className="recipe-name">{title}</h3>

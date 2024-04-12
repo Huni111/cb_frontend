@@ -32,15 +32,15 @@ const Header = () => {
 
     return (
         <header className=" text-gray p-4">
-            <Link to='/'> <h1 className="text-7xl text-center font-bold cim">Cook-Book</h1></Link>
+            <Link to='/app'> <h1 className="text-7xl text-center font-bold cim">Cook-Book</h1></Link>
             <nav>
                 <ul className="menuItems">
-                    <li><Link to="/">Összes recept</Link></li>
-                    {user.name && <li><Link to="/myrec">Sajat receptjeim</Link></li>}
-                    {user.name && <li><Link to="/upload">Uj recept feltoltes</Link></li>}
-                    {!user.name && <li><Link to="/login">Bejelentkezes</Link></li>}
-                    {user.name && <li><Link to="/logout">Kijelentkezes</Link></li>}
-                    {!user.name && <li><Link to="/registration">Regisztralas</Link></li>}
+                    <li><Link to="/app">Összes recept</Link></li>
+                    {user.name && <li><Link to="/app/myrec">Sajat receptjeim</Link></li>}
+                    {user.name && <li><Link to="/app/upload">Uj recept feltoltes</Link></li>}
+                    {!user.name && <li><Link to="/app/login">Bejelentkezes</Link></li>}
+                    {user.name && <li><Link to="/app/logout">Kijelentkezes</Link></li>}
+                    {!user.name && <li><Link to="/app/registration">Regisztralas</Link></li>}
                     {user.name && <li>Felhasználó: {user.name}</li>}
                 </ul>
                 <button onClick={handleToggle} className="toggle_menu"><MenuIcon/>Menü</button>
@@ -50,12 +50,12 @@ const Header = () => {
             <div className="side_menu">
             
             <ul className="toggleItems">
-                    <li><Link to="/">Összes recept</Link></li>
-                    {user.name && <li><Link to="/myrec">Sajat receptjeim</Link></li>}
-                    {user.name && <li><Link to="/upload">Uj recept feltoltes</Link></li>}
-                    {!user.name && <li><Link to="/login">Bejelentkezes</Link></li>}
-                    {user.name && <li><Link to="/logout">Kijelentkezes</Link></li>}
-                    {!user.name && <li><Link to="/registration">Regisztralas</Link></li>}
+                    <li><Link to="/app">Összes recept</Link></li>
+                    {user.name && <li><Link to="/app/myrec">Sajat receptjeim</Link></li>}
+                    {user.name && <li><Link to="/app/upload">Uj recept feltoltes</Link></li>}
+                    {!user.name && <li><Link to="/app/login">Bejelentkezes</Link></li>}
+                    {user.name && <li><Link to="/app/logout">Kijelentkezes</Link></li>}
+                    {!user.name && <li><Link to="/app/registration">Regisztralas</Link></li>}
                     {user.name && <li>Felhasználó: {user.name}</li>}
                 </ul>
 

@@ -95,7 +95,7 @@ const MyDetailPage = () => {
                         <DeleteIcon className="delete-icon" />
                         </button> 
 
-                        <Link to={`/update/${recipeId}`} >
+                        <Link to={`/app/update/${recipeId}`} >
                         <BorderColorIcon className="delete-icon" />
                         </Link> 
 

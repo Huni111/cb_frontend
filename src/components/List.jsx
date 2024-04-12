@@ -15,7 +15,7 @@ const List = (props) => {
     return(
         <>
             
-                <Link to={`/details/${props.rid}`} className="recipe"
+                <Link to={`/app/details/${props.rid}`} className="recipe"
                         style={{ backgroundImage: `url(${props.img})` }}>
                     <div>
                         <h3 className="recipe-name">{title}</h3>
