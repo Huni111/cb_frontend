@@ -32,6 +32,8 @@ html, body {
 
 }
 
+
+
 .landing_sec {
   margin: 0;
   padding: 1rem;
@@ -42,6 +44,12 @@ html, body {
 
 
 }
+.first_landing {
+  padding-top: 0;
+  position: relative;
+  bottom: 1.2rem;
+}
+
 .pot_image {
   max-width: 25rem;
   margin: 0;
@@ -143,6 +151,18 @@ nav {
 .menuItems li a:hover::before {
   width: 100%;
   color: transparent;
+}
+
+.lang_select {
+  position: relative;
+  bottom: 3rem;
+  margin: 0;
+  color: #F05941;
+}
+
+.lang_select select {
+  background-color: #fecea66e;
+  margin-left: 1rem;
 }
 
 /* RECIPE LIST */
