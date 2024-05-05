@@ -6,7 +6,7 @@ const MyList = (props) => {
     const capitalizeFirstLetter = (str) => {
         return str.charAt(0).toUpperCase() + str.slice(1);
     };
-    const title = props && props.name ? capitalizeFirstLetter(props.name) : 'Betoltes...';
+    const title = props && props.name ? capitalizeFirstLetter(props.name) : 'Loading...';
 
 
 

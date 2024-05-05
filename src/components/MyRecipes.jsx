@@ -1,6 +1,7 @@
 import React, {useEffect, useState, useContext} from "react";
 import MyList from "./MyList.jsx";
 import { UserContext } from "../contexts/userContext.jsx";
+import { useTranslation } from "react-i18next";
 
 
 const MyRecipeList = () => {
@@ -10,6 +11,8 @@ const [error, setError] = useState(null)
 const [loading, setLoading] = useState(true);
 const {user} = useContext(UserContext);
 const fetchRecipes = import.meta.env.VITE_API_BASE_URL + "recipe/my_recipes/" + user._id;
+const {t} = useTranslation();
+
 
 
 
@@ -70,7 +73,7 @@ const createList = (rec) => {
                 {loading ? (
                     <div style={{ height: '30rem' }}>
                         <h2 style={{ color: '#F05941', fontSize: 'large', fontWeight: 'bold', margin: '5rem' }}>
-                            Betoltes...
+                            {t('MyRecipeList.loading')}
                         </h2>
                     </div>
                 ) : recipe && recipe.length > 0 ? (
@@ -81,7 +84,7 @@ const createList = (rec) => {
 
                     <div style={{ height: '30rem' }}>
                         <h2 style={{ color: '#F05941', fontSize: 'large', fontWeight: 'bold', margin: '5rem' }}>
-                            Nincsenek elérhető saját receptek!
+                        {t('MyRecipeList.noRecipesAvailable')}
                         </h2>
                     </div>
                 )}

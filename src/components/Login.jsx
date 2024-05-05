@@ -1,5 +1,7 @@
 import React, { useState, useContext } from 'react';
 import { UserContext } from '../contexts/userContext';
+import { useTranslation } from "react-i18next";
+
 
 
 const LoginPage = () => {
@@ -12,6 +14,8 @@ const LoginPage = () => {
     Email: '',
     password: '',
   });
+  const {t} = useTranslation();
+
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -77,17 +81,17 @@ const LoginPage = () => {
   return (
     <main>
       <div className='form_container'>
-      <h2 className='form_header'>Bejelentkezés</h2>
-        {succes && <h3 style={{ ...styles.header, color: 'green' }}>Bejelentkezve!</h3>}
-        {loading && <h3 style={{ ...styles.header, color: '#F05941' }}>Folyamatban...!</h3>}
-        {error && <h3 style={{ ...styles.header, color: 'red' }}>Hibas jelszo vagy email cim!</h3>}
+      <h2 className='form_header'>{t('LoginPage.header')}</h2>
+        {succes && <h3 style={{ ...styles.header, color: 'green' }}>{t('LoginPage.loggedIn')}!</h3>}
+        {loading && <h3 style={{ ...styles.header, color: '#F05941' }}>{t('LoginPage.loading')}</h3>}
+        {error && <h3 style={{ ...styles.header, color: 'red' }}>{t('LoginPage.error')}</h3>}
 
 
 
         
         <form className='form_loginform' onSubmit={handleSubmit}>
           <label className='form_label' htmlFor="Email">
-            Email:
+          {t('LoginPage.emailLabel')}
           </label>
           <input
             className='form_input'
@@ -100,7 +104,7 @@ const LoginPage = () => {
           />
 
           <label className='form_label' htmlFor="password">
-            Jelszó:
+          {t('LoginPage.passwordLabel')}
           </label>
           <input
             className='form_input'
@@ -113,7 +117,7 @@ const LoginPage = () => {
           />
 
           <button className='form_buttonLogin' type="submit">
-            Login
+          {t('LoginPage.loginButton')}
           </button>
         </form>
       </div>

@@ -183,14 +183,19 @@ main {
 /* SEARCH BAR */
 .search_bar {
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
   background-color: #FECDA6;
-  padding: 1rem
+  padding: 1rem;
 }
 .search_input {
   background-color: #f6e9de;
   width: 20rem;
   padding: 0.1rem;
+}
+
+.search_bar label {
+  margin-left: 0.5rem;
 }
 
 
@@ -642,6 +647,10 @@ h6 {
   }
   .form_form {
     width: 100%;
+  }
+  .search_input {
+    margin-bottom: 0.5rem;
+    width: 90%;
   }
 }
 /* MEDIA QUERIES */

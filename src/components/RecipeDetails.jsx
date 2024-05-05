@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
+import { useTranslation } from "react-i18next";
+
 
 const DetailPage = () => {
   const { recipeId } = useParams();
@@ -7,6 +9,8 @@ const DetailPage = () => {
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
   const detailLink = import.meta.env.VITE_API_BASE_URL + 'recipe/recipes/'
+  const {t} = useTranslation();
+
 
   
 
@@ -38,44 +42,44 @@ const DetailPage = () => {
 
 
   return (
-   <>
-      {loading ? ( // Render a loading indicator while fetching is in progress
-        <p>Betoltes...</p>
-      ) : (
-        <div className="wrap-detail">
-          <div className="detail-block">
-            <h1 className="recipe-title">{title}</h1>
+    <>
+    {loading ? (
+      <p>{t('DetailPage.loading')}</p>
+    ) : (
+      <div className="wrap-detail">
+        <div className="detail-block">
+          <h1 className="recipe-title">{title}</h1>
+        </div>
+        <div className="detail-block">
+          <div className="detail-section">
+            {recipe && recipe.image_link ? (
+              <img className="recipe-img" src={recipe.image_link} alt={title} />
+            ) : (
+              <h2>{t('DetailPage.loading')}</h2>
+            )}
           </div>
-          <div className="detail-block">
-            <div className="detail-section">
-              {recipe && recipe.image_link ? (
-                <img className="recipe-img" src={recipe.image_link} alt={title} />
+          <div className="detail-section">
+            <br />
+            <h2>{t('DetailPage.ingredientsHeader')}</h2>
+            <ul>
+              {recipe && recipe.ingredients ? (
+                recipe.ingredients.map((ing, index) => <li key={index}>{ing}</li>)
               ) : (
-                <h2>Betoltes...</h2>
+                <li>{t('DetailPage.noIngredients')}</li>
               )}
-            </div>
-            <div className="detail-section">
-              <br />
-              <h2>Hozzávalók:</h2>
-              <ul>
-                {recipe && recipe.ingredients ? (
-                  recipe.ingredients.map((ing, index) => <li key={index}>{ing}</li>)
-                ) : (
-                  <li>No ingredients!</li>
-                )}
-              </ul>
-              <br />
-              <h2>Elkészités:</h2>
-              {recipe && recipe.instructions ?
-              <p>{recipe.instructions}</p> : <p>Betoltes...</p>}
-              <br />
-              {recipe && recipe.preparation_time ? 
-              <h3>Fozesi ido: {recipe.preparation_time} perc</h3> : <p>Betoltes...</p>}
-            </div>
+            </ul>
+            <br />
+            <h2>{t('DetailPage.instructionsHeader')}</h2>
+            {recipe && recipe.instructions ?
+              <p>{recipe.instructions}</p> : <p>{t('DetailPage.loading')}</p>}
+            <br />
+            {recipe && recipe.preparation_time ? 
+              <h3>{t('DetailPage.cookingTime', { time: recipe.preparation_time })}</h3> : <p>{t('DetailPage.loading')}</p>}
           </div>
         </div>
-      )}
-    </>
+      </div>
+    )}
+  </>
   );
 };
 

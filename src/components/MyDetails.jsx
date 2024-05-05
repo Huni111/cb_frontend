@@ -3,6 +3,8 @@ import { useParams } from "react-router-dom";
 import DeleteIcon from '@mui/icons-material/Delete';
 import BorderColorIcon from '@mui/icons-material/BorderColor';
 import { Link } from "react-router-dom";
+import { useTranslation } from "react-i18next";
+
 
 const MyDetailPage = () => {
     const { recipeId } = useParams();
@@ -13,6 +15,7 @@ const MyDetailPage = () => {
     const [deleteDone, setDone] = useState(false);
     const deleteLink = import.meta.env.VITE_API_BASE_URL + 'recipe/delete/' + recipeId
     const detailLink = import.meta.env.VITE_API_BASE_URL + 'recipe/recipes/'
+    const {t} = useTranslation();
 
     
 
@@ -83,7 +86,7 @@ const MyDetailPage = () => {
     return (
         <>
             {loading ? ( // Render a loading indicator while fetching is in progress
-                <p>Betoltes...</p>
+                <p>{t('MyDetailPage.loading')}</p>
             ) : (
                 <div className="wrap-detail">
                     <div className="detail-block">
@@ -109,26 +112,26 @@ const MyDetailPage = () => {
                             {recipe && recipe.image_link ? (
                                 <img className="recipe-img" src={recipe.image_link} alt={title} />
                             ) : (
-                                <h2>Betoltes...</h2>
+                                <h2>{t('MyDetailPage.loading')}</h2>
                             )}
                         </div>
                         <div className="detail-section">
                             <br />
-                            <h2>Hozzávalók:</h2>
+                            <h2>{t('MyDetailPage.ingredientsHeader')}</h2>
                             <ul>
                                 {recipe && recipe.ingredients ? (
                                     recipe.ingredients.map((ing, index) => <li key={index}>{ing}</li>)
                                 ) : (
-                                    <li>No ingredients!</li>
+                                    <li>{t('MyDetailPage.noIngredients')}</li>
                                 )}
                             </ul>
                             <br />
-                            <h2>Elkészités:</h2>
+                            <h2>{t('MyDetailPage.preparationHeader')}</h2>
                             {recipe && recipe.instructions ?
-                                <p>{recipe.instructions}</p> : <p>Betoltes...</p>}
+                                <p>{recipe.instructions}</p> : <p>{t('MyDetailPage.loading')}</p>}
                             <br />
                             {recipe && recipe.preparation_time ?
-                                <h3>Fozesi ido: {recipe.preparation_time} perc</h3> : <p>Betoltes...</p>}
+                                <h3>{t('MyDetailPage.cookingTime')}: {recipe.preparation_time} {t('MyDetailPage.minute')}</h3> : <p>{t('MyDetailPage.loading')}</p>}
                         </div>
                     </div>
                 </div>
@@ -140,9 +143,9 @@ const MyDetailPage = () => {
                     <div className="delete-popup popup-text">
 
 
-                        <p>Bisztos törölni szeretnéd? {title}</p>
-                        <button onClick={handelDelete}>Igen, törlöm!</button>
-                        <button onClick={() => setShow(false)}>Mégse!</button>
+                        <p>{t('MyDetailPage.deleteConfirmation')} {title}</p>
+                        <button onClick={handelDelete}>{t('MyDetailPage.deleteButton')}</button>
+                        <button onClick={() => setShow(false)}>{t('MyDetailPage.cancelButton')}</button>
 
 
                     </div>
@@ -155,8 +158,8 @@ const MyDetailPage = () => {
                     <div className="delete-popup popup-text">
 
 
-                        <p>Törlés sikeres volt! {title}</p>
-                        <button><Link to={'/myrec'}> Bezar!</Link></button>
+                        <p>{t('MyDetailPage.deleteSuccess')} {title}</p>
+                        <button><Link to={'/myrec'}> {t('MyDetailPage.closeButton')}</Link></button>
 
                     </div>
                 </div>

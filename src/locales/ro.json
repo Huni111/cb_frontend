@@ -1,0 +1,124 @@
+{
+  "Header": {
+    "allRecipes": "Toate rețetele",
+    "myRecipes": "Rețetele mele",
+    "uploadRecipe": "Încarcă rețetă",
+    "login": "Autentificare",
+    "logout": "Deconectare",
+    "register": "Înregistrare",
+    "user": "Utilizator"
+  },
+  "Home": {
+    "search": "Căutare:",
+    "loading": "Se încarcă...",
+    "noRecipesAvailable": "Nu există rețete disponibile!"
+  },
+  "Landing": {
+    "registrationButton": "Înregistrare",
+    "loginButton": "Autentificare",
+    "recipesButton": "Rețete",
+    "menuButton": "Meniu",
+    "sharePrompt": "Împărtășește",
+    "recipes": "rețetele",
+    "world": "tale cu lumea!"
+  },
+  "LoginPage": {
+    "header": "Autentificare",
+    "loggedIn": "Autentificat!",
+    "loading": "În curs...",
+    "error": "Eroare de parolă sau adresă de email!",
+    "emailLabel": "Email:",
+    "passwordLabel": "Parolă:",
+    "loginButton": "Autentificare"
+  },
+  "LogoutPage": {
+    "logoutButton": "Deconectare:",
+    "loggingOut": "Deconectare...",
+    "loggedOut": "Deconectat!",
+    "logoutFailed": "Eșuat!"
+  },
+  "MyDetailPage": {
+    "loading": "Se încarcă...",
+    "noIngredients": "Fără ingrediente!",
+    "ingredientsHeader": "Ingrediente:",
+    "preparationHeader": "Preparare:",
+    "cookingTime": "Timp de gătit:",
+    "minute": "minut",
+    "deleteConfirmation": "Ești sigur că vrei să ștergi?",
+    "deleteButton": "Da, șterge!",
+    "cancelButton": "Anulează",
+    "deleteSuccess": "Ștergere reușită! {title}",
+    "closeButton": "Închide"
+  },
+  "MyRecipeList": {
+    "loading": "Se încarcă...",
+    "noRecipesAvailable": "Nu există rețete proprii disponibile!"
+  },
+  "UpdateForm": {
+    "header": "EDITARE REȚETĂ"
+  },
+  "UploadForm": {
+    "header": "REȚETĂ NOUĂ",
+    "labels": {
+      "newRecipe": "Rețetă nouă:",
+      "language": "Limbă:",
+      "ingredients": "Ingrediente:",
+      "newIngredient": "ingredient nou?",
+      "addIngredient": "Adaugă ingredient",
+      "deleteLast": "Șterge ultimul",
+      "instructions": "Instrucțiuni:",
+      "instructionsPlaceholder": "Descrie detaliat modul de preparare...",
+      "imageLink": "Link imagine:",
+      "cookingTime": "Durata de preparare (minute):",
+      "mealtime": "Masa:",
+      "category": "Categorie:",
+      "saveButton": "Salvează"
+    },
+    "selectOptions": {
+      "language": {
+        "prompt": "În ce limbă scrii rețeta?"
+      },
+      "mealtime": {
+        "select": "Selectează",
+        "appetizer": "Aperitiv",
+        "mainCourse": "Fel principal",
+        "dessert": "Desert",
+        "soup": "Supă"
+      },
+      "category": {
+        "select": "Selectează",
+        "traditional": "Tradițional",
+        "gourmet": "Gourmet",
+        "vegetarian": "Vegetarian",
+        "vegan": "Vegan",
+        "salad": "Salată"
+      }
+    },
+    "messages": {
+      "noIngredients": "Nu sunt adăugate ingrediente!",
+      "saved": "Salvat!",
+      "loading": "În curs...",
+      "saveError": "Eroare la salvare!"
+    }
+  },
+  "DetailPage": {
+    "loading": "Se încarcă...",
+    "noIngredients": "Fără ingrediente!",
+    "ingredientsHeader": "Ingrediente:",
+    "instructionsHeader": "Instrucțiuni:",
+    "cookingTime": "Timp de gătit: {time} minute",
+    "loadingError": "Eroare la încărcare"
+  },
+  "RegistrationPage": {
+    "passwordsDoNotMatch": "Parolele nu se potrivesc!",
+    "registrationSuccessful": "Înregistrare reușită! Autentifică-te!",
+    "processing": "În curs...",
+    "emailAlreadyUsed": "Acest email este deja folosit!",
+    "registrationHeader": "Înregistrare",
+    "usernameLabel": "Nume utilizator:",
+    "emailLabel": "Email:",
+    "passwordLabel": "Parolă:",
+    "confirmPasswordLabel": "Confirmă parola:",
+    "registerButton": "Înregistrare"
+  }
+}

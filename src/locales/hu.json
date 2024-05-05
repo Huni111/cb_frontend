@@ -1,0 +1,124 @@
+{
+  "Header": {
+    "allRecipes": "Összes recept",
+    "myRecipes": "Sajat receptjeim",
+    "uploadRecipe": "Uj recept feltoltes",
+    "login": "Bejelentkezes",
+    "logout": "Kijelentkezes",
+    "register": "Regisztralas",
+    "user": "Felhasználó"
+  },
+  "Home": {
+    "search": "Keresés:",
+    "loading": "Betöltés...",
+    "noRecipesAvailable": "Nincsenek elérhető receptek!"
+  },
+  "Landing": {
+    "registrationButton": "Regisztráció",
+    "loginButton": "Bejelentkezés",
+    "recipesButton": "Receptek",
+    "menuButton": "Menü",
+    "sharePrompt": "Oszd meg",
+    "recipes": "recptjeid",
+    "world": "a nagyvilággal!"
+  },
+  "LoginPage": {
+    "header": "Bejelentkezés",
+    "loggedIn": "Bejelentkezve!",
+    "loading": "Folyamatban...",
+    "error": "Hibas jelszo vagy email cim!",
+    "emailLabel": "Email:",
+    "passwordLabel": "Jelszó:",
+    "loginButton": "Bejelentkezés"
+  },
+  "LogoutPage": {
+    "logoutButton": "Kijelentkezes:",
+    "loggingOut": "Kijelentkezes...",
+    "loggedOut": "Kijelentkezve!",
+    "logoutFailed": "Sikertelen!"
+  },
+  "MyDetailPage": {
+    "loading": "Betoltes...",
+    "noIngredients": "No ingredients!",
+    "ingredientsHeader": "Hozzávalók:",
+    "preparationHeader": "Elkészités:",
+    "cookingTime": "Fozesi ido:",
+    "minute": "perc",
+    "deleteConfirmation": "Bisztos törölni szeretnéd? ",
+    "deleteButton": "Igen, törlöm!",
+    "cancelButton": "Mégse!",
+    "deleteSuccess": "Törlés sikeres volt! {title}",
+    "closeButton": "Bezar!"
+  },
+  "MyRecipeList": {
+    "loading": "Betoltes...",
+    "noRecipesAvailable": "Nincsenek elérhető saját receptek!"
+  },
+  "UpdateForm": {
+    "header": "RECEPT SZERKESZTÉSE"
+  },
+  "UploadForm": {
+    "header": "ÚJ RECEPT",
+    "labels": {
+      "newRecipe": "Új recept:",
+      "language": "Nyelv:",
+      "ingredients": "Hozzávalok:",
+      "newIngredient": "új hozzávaló?",
+      "addIngredient": "Hozzá ad!",
+      "deleteLast": "Utolsó törlése!",
+      "instructions": "Elkészítés:",
+      "instructionsPlaceholder": "Írd le részletesen hogy kell...",
+      "imageLink": "Kép linkje:",
+      "cookingTime": "Elkészítési időtartama (perc):",
+      "mealtime": "Étkezés:",
+      "category": "Kategória:",
+      "saveButton": "Mentés!"
+    },
+    "selectOptions": {
+      "language": {
+        "prompt": "Milyen nyelven írod a receptet?"
+      },
+      "mealtime": {
+        "select": "Kiválaszt",
+        "appetizer": "Előétel",
+        "mainCourse": "Főétel",
+        "dessert": "Desszert",
+        "soup": "Leves"
+      },
+      "category": {
+        "select": "Kiválaszt",
+        "traditional": "Hagyományos",
+        "gourmet": "Ínyenc",
+        "vegetarian": "Vegetáriánus",
+        "vegan": "Vegán",
+        "salad": "Saláta"
+      }
+    },
+    "messages": {
+      "noIngredients": "Nincs hozzá adva alapanyag!",
+      "saved": "Mentve!",
+      "loading": "Folyamatban...",
+      "saveError": "Hiba a mentés során!"
+    }
+  },
+  "DetailPage": {
+    "loading": "Betöltés...",
+    "noIngredients": "No ingredients!",
+    "ingredientsHeader": "Hozzávalók:",
+    "instructionsHeader": "Elkészítés:",
+    "cookingTime": "Főzési idő: {time} perc",
+    "loadingError": "Betöltés..."
+  },
+  "RegistrationPage": {
+    "passwordsDoNotMatch": "Jelszavak nem egyeznek!",
+    "registrationSuccessful": "Sikeres regisztracio! Jelentezz be!",
+    "processing": "Folyamatban...",
+    "emailAlreadyUsed": "Ez az email mar hasznalva volt!",
+    "registrationHeader": "Regisztracio!",
+    "usernameLabel": "Felhasznalo nev:",
+    "emailLabel": "Email:",
+    "passwordLabel": "Jelszo:",
+    "confirmPasswordLabel": "Jelszo megerositese:",
+    "registerButton": "Regisztracio"
+  }
+}

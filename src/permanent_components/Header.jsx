@@ -2,12 +2,13 @@ import React, { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { UserContext } from "../contexts/userContext.jsx";
 import MenuIcon from '@mui/icons-material/Menu';
-import CloseIcon from '@mui/icons-material/Close';
+import { useTranslation } from 'react-i18next';
 
 
 const Header = () => {
     const { user, clearUser } = useContext(UserContext);
-    const [toggleActive, setToggle] = useState(false)
+    const [toggleActive, setToggle] = useState(false);
+    const {t} = useTranslation();
 
     useEffect (() => {
 
@@ -35,28 +36,28 @@ const Header = () => {
             <Link to='/app'> <h1 className="text-7xl text-center font-bold cim">Cook-Book</h1></Link>
             <nav>
                 <ul className="menuItems">
-                    <li><Link to="/app">Összes recept</Link></li>
-                    {user.name && <li><Link to="/app/myrec">Sajat receptjeim</Link></li>}
-                    {user.name && <li><Link to="/app/upload">Uj recept feltoltes</Link></li>}
-                    {!user.name && <li><Link to="/app/login">Bejelentkezes</Link></li>}
-                    {user.name && <li><Link to="/app/logout">Kijelentkezes</Link></li>}
-                    {!user.name && <li><Link to="/app/registration">Regisztralas</Link></li>}
-                    {user.name && <li>Felhasználó: {user.name}</li>}
+                    <li><Link to="/app">{t('Header.allRecipes')}</Link></li>
+                    {user.name && <li><Link to="/app/myrec">{t('Header.myRecipes')}</Link></li>}
+                    {user.name && <li><Link to="/app/upload">{t('Header.uploadRecipe')}</Link></li>}
+                    {!user.name && <li><Link to="/app/login">{t('Header.login')}</Link></li>}
+                    {user.name && <li><Link to="/app/logout">{t('Header.logout')}</Link></li>}
+                    {!user.name && <li><Link to="/app/registration">{t('Header.register')}</Link></li>}
+                    {user.name && <li>{t('Header.user')}: {user.name}</li>}
                 </ul>
-                <button onClick={handleToggle} className="toggle_menu"><MenuIcon/>Menü</button>
+                <button onClick={handleToggle} className="toggle_menu"><MenuIcon/>{t('Landing.menuButton')}</button>
             </nav>
 
            {toggleActive && <div style={{display:'block'}} onClick={handleToggle} className="popup-wrapper">
             <div className="side_menu">
             
             <ul className="toggleItems">
-                    <li><Link to="/app">Összes recept</Link></li>
-                    {user.name && <li><Link to="/app/myrec">Sajat receptjeim</Link></li>}
-                    {user.name && <li><Link to="/app/upload">Uj recept feltoltes</Link></li>}
-                    {!user.name && <li><Link to="/app/login">Bejelentkezes</Link></li>}
-                    {user.name && <li><Link to="/app/logout">Kijelentkezes</Link></li>}
-                    {!user.name && <li><Link to="/app/registration">Regisztralas</Link></li>}
-                    {user.name && <li>Felhasználó: {user.name}</li>}
+                    <li><Link to="/app">{t('Header.allRecipes')}</Link></li>
+                    {user.name && <li><Link to="/app/myrec">{t('Header.myRecipes')}</Link></li>}
+                    {user.name && <li><Link to="/app/upload">{t('Header.uploadRecipe')}</Link></li>}
+                    {!user.name && <li><Link to="/app/login">{t('Header.login')}</Link></li>}
+                    {user.name && <li><Link to="/app/logout">{t('Header.logout')}</Link></li>}
+                    {!user.name && <li><Link to="/app/registration">{t('Header.register')}</Link></li>}
+                    {user.name && <li>{t('Header.user')}: {user.name}</li>}
                 </ul>
 
             </div>

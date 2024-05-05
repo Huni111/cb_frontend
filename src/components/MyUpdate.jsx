@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-
+import { useTranslation } from "react-i18next";
 import blankFood from "../../images/blankfoodimage.png"
 import { dark } from "@mui/material/styles/createPalette";
 
@@ -11,6 +11,8 @@ const UpdateForm = () => {
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
   const link = import.meta.env.VITE_API_BASE_URL;
+  const { t } = useTranslation();
+
 
   const [formData, setFormData] = useState({
     recipeName: "",
@@ -159,10 +161,10 @@ const UpdateForm = () => {
     <>
       <main>
         <div className='form_container'>
-          <h1 style={styles.header}> RECEPT SZERKESZTÉSE</h1>
+          <h1 style={styles.header}> {t('UpdateForm.header')}</h1>
 
           <form className='form_form' onSubmit={handleSubmit}>
-            <label className='form_label'>Új recept:</label>
+            <label className='form_label'>{t('UploadForm.header')}</label>
             <input
               className='form_input'
               type="text"
@@ -171,15 +173,15 @@ const UpdateForm = () => {
               value={formData.recipeName}
               onChange={handleInputChange}
             />
-            <label className='form_label' >Nyelv:</label>
+            <label className='form_label' >{t('UploadForm.labels.language')}</label>
             <select className='form_select' name="language" value={formData.language} onChange={handleInputChange}>
-              <option value=''>Milyen nyelven írod a receptet?</option>
+              <option value=''>{t('UploadForm.selectOptions.language.prompt')}</option>
               <option value="English">English</option>
               <option value="Magyar">Magyar</option>
               <option value="Romana">Româna</option>
             </select>
             <br />
-            <label className='form_label'>Hozzávalok:</label>
+            <label className='form_label'>{t('UploadForm.labels.ingredients')}</label>
             {formData.ingList.length !== 0 ? (
               formData.ingList.map((ing, id) => <li key={id}>{ing}</li>)
             ) : (
@@ -187,7 +189,7 @@ const UpdateForm = () => {
             )}
             <input
               className='form_input'
-              placeholder="új hozzávaló?"
+              placeholder={t('UploadForm.labels.newIngredient')}
               type="text"
               onKeyDown={handleEnter}
               name="storredIng"
@@ -196,36 +198,36 @@ const UpdateForm = () => {
             />
             <div className='form_listbutton'>
               <button className='form_button' onClick={handleAdd}>
-                Hozzá ad!
+                {t('UploadForm.labels.addIngredient')}
               </button>
               <button className='form_button' onClick={deleteIng}>
-                Utolsó törlése!
+                {t('UploadForm.labels.deleteLast')}
               </button>
             </div>
             <br />
-            <label className='form_label'>Elkészítés:</label>
+            <label className='form_label'>{t('UploadForm.labels.instructions')}</label>
             <br />
             <textarea
               className='form_input'
               onChange={handleInputChange}
               rows="10"
               cols="80"
-              placeholder="Írd le részletesen hogy kell..."
+              placeholder={t('UploadForm.labels.instructionsPlaceholder')}
               name="instructions"
               value={formData.instructions}
             ></textarea>
             <br />
-            <label className='form_label'>Kép linkje:</label>
+            <label className='form_label'>{t('UploadForm.labels.imageLink')}</label>
             <input
               className='form_input'
               onChange={handleInputChange}
               type="text"
-              placeholder="adj meg URL-t"
+              placeholder="URL"
               name="imgLink"
               value={formData.imgLink}
             />
             <br />
-            <label className='form_label'>Elkészítési időtartama (perc):</label>
+            <label className='form_label'>{t('UploadForm.labels.cookingTime')}</label>
             <input
               className='form_input'
               onChange={handleInputChange}
@@ -234,32 +236,31 @@ const UpdateForm = () => {
               value={formData.cookingTime}
             />
             <br />
-            <label className='form_label' >Étkezés:</label>
+            <label className='form_label' >{t('UploadForm.labels.mealtime')}</label>
             <select className='form_select' name="mealtime" value={formData.mealtime} onChange={handleInputChange}>
-              <option value="Kivalaszt">Kiválaszt</option>
-              <option value="Eloetel">Előétel</option>
-              <option value="Foetel">Főétel</option>
-              <option value="Desszert">Desszert</option>
-              <option value="Leves">Leves</option>
+              <option value="Select">{t('UploadForm.selectOptions.mealtime.select')}</option>
+              <option value="Starter">{t('UploadForm.selectOptions.mealtime.appetizer')}</option>
+              <option value="Main">{t('UploadForm.selectOptions.mealtime.mainCourse')}</option>
+              <option value="Dessert">{t('UploadForm.selectOptions.mealtime.dessert')}</option>
+              <option value="Soup">{t('UploadForm.selectOptions.mealtime.soup')}</option>
             </select>
             <br />
-            <label className='form_label' >Kategória:</label>
+            <label className='form_label' >{t('UploadForm.labels.category')}</label>
             <select className='form_select' name="category" value={formData.category} onChange={handleInputChange}>
-              <option value="Kivalaszt">Kiválaszt</option>
-              <option value="Hagyomanyos">Hagyományos</option>
-              <option value="Inyenc">Ínyenc</option>
-              <option value="Vegetarianus">Vegetáriánus</option>
-              <option value="Vegan">Vegán</option>
-              <option value="Salata">Saláta</option>
+              <option value="Select">{t('UploadForm.selectOptions.category.select')}</option>
+              <option value="Traditional">{t('UploadForm.selectOptions.category.traditional')}</option>
+              <option value="Gourmet">{t('UploadForm.selectOptions.category.gourmet')}</option>
+              <option value="Vegetarian">{t('UploadForm.selectOptions.category.vegetarian')}</option>
+              <option value="Vegan">{t('UploadForm.selectOptions.category.vegan')}</option>
+              <option value="Salad">{t('UploadForm.selectOptions.category.salad')}</option>
             </select>
             <br />
-            {succes && <h3 style={{ ...styles.header, color: 'green' }}>Mentve!</h3>}
-            {loading && <h3 style={{ ...styles.header, color: '#F05941' }}>Folyamatban...!</h3>}
-            {error && <h3 style={{ ...styles.header, color: 'red' }}>Hiba a mentés során!</h3>}
-
+            {succes && <h3 style={{ ...styles.header, color: 'green' }}>{t('UploadForm.messages.saved')}</h3>}
+            {loading && <h3 style={{ ...styles.header, color: '#F05941' }}>{t('UploadForm.messages.loading')}</h3>}
+            {error && <h3 style={{ ...styles.header, color: 'red' }}>{t('UploadForm.messages.saveError')}</h3>}
             <div className='form_listbutton'>
               <button className='form_button' type="submit">
-                Mentés!
+                {t('UploadForm.labels.saveButton')}
               </button>
             </div>
             <br />

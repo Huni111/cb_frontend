@@ -1,0 +1,124 @@
+{
+  "Header": {
+    "allRecipes": "All recipes",
+    "myRecipes": "My recipes",
+    "uploadRecipe": "Upload recipe",
+    "login": "Login",
+    "logout": "Logout",
+    "register": "Register",
+    "user": "User"
+  },
+  "Home": {
+    "search": "Search:",
+    "loading": "Loading...",
+    "noRecipesAvailable": "No recipes available!"
+  },
+  "Landing": {
+    "registrationButton": "Register",
+    "loginButton": "Login",
+    "recipesButton": "Recipes",
+    "menuButton": "Menu",
+    "sharePrompt": "Share your",
+    "recipes": "recipes",
+    "world": "with the world"
+  },
+  "LoginPage": {
+    "header": "Login",
+    "loggedIn": "Logged In!",
+    "loading": "Processing...",
+    "error": "Incorrect password or email address!",
+    "emailLabel": "Email:",
+    "passwordLabel": "Password:",
+    "loginButton": "Login"
+  },
+  "LogoutPage": {
+    "logoutButton": "Logout:",
+    "loggingOut": "Logging out...",
+    "loggedOut": "Logged out!",
+    "logoutFailed": "Logout failed!"
+  },
+  "MyDetailPage": {
+    "loading": "Loading...",
+    "noIngredients": "No ingredients!",
+    "ingredientsHeader": "Ingredients:",
+    "preparationHeader": "Preparation:",
+    "cookingTime": "Cooking time:",
+    "minute": "minutes",
+    "deleteConfirmation": "Are you sure you want to delete this?",
+    "deleteButton": "Yes, delete!",
+    "cancelButton": "Cancel",
+    "deleteSuccess": "Deletion successful! {title}",
+    "closeButton": "Close"
+  },
+  "MyRecipeList": {
+    "loading": "Loading...",
+    "noRecipesAvailable": "No personal recipes available!"
+  },
+  "UpdateForm": {
+    "header": "EDIT RECIPE"
+  },
+  "UploadForm": {
+    "header": "Your Recipe",
+    "labels": {
+      "newRecipe": "Your recipe:",
+      "language": "Language:",
+      "ingredients": "Ingredients:",
+      "newIngredient": "new ingredient?",
+      "addIngredient": "Add ingredient",
+      "deleteLast": "Delete last",
+      "instructions": "Instructions:",
+      "instructionsPlaceholder": "Describe in detail how to prepare...",
+      "imageLink": "Image link:",
+      "cookingTime": "Preparation time (minutes):",
+      "mealtime": "Mealtime:",
+      "category": "Category:",
+      "saveButton": "Save"
+    },
+    "selectOptions": {
+      "language": {
+        "prompt": "In what language are you writing the recipe?"
+      },
+      "mealtime": {
+        "select": "Select",
+        "appetizer": "Appetizer",
+        "mainCourse": "Main Course",
+        "dessert": "Dessert",
+        "soup": "Soup"
+      },
+      "category": {
+        "select": "Select",
+        "traditional": "Traditional",
+        "gourmet": "Gourmet",
+        "vegetarian": "Vegetarian",
+        "vegan": "Vegan",
+        "salad": "Salad"
+      }
+    },
+    "messages": {
+      "noIngredients": "No ingredients added!",
+      "saved": "Saved!",
+      "loading": "Processing...",
+      "saveError": "Error during save!"
+    }
+  },
+  "DetailPage": {
+    "loading": "Loading...",
+    "noIngredients": "No ingredients!",
+    "ingredientsHeader": "Ingredients:",
+    "instructionsHeader": "Instructions:",
+    "cookingTime": "Cooking time: {time} minutes",
+    "loadingError": "Loading error"
+  },
+  "RegistrationPage": {
+    "passwordsDoNotMatch": "Passwords do not match!",
+    "registrationSuccessful": "Registration successful! Please log in!",
+    "processing": "Processing...",
+    "emailAlreadyUsed": "This email is already used!",
+    "registrationHeader": "Registration",
+    "usernameLabel": "Username:",
+    "emailLabel": "Email:",
+    "passwordLabel": "Password:",
+    "confirmPasswordLabel": "Confirm password:",
+    "registerButton": "Register"
+  }
+}

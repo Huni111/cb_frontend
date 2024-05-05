@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { useTranslation } from "react-i18next";
+
 
 import blankFood from "../../images/blankfoodimage.png"
 
@@ -8,6 +10,9 @@ const UploadForm = () => {
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
   const link = import.meta.env.VITE_API_BASE_URL;
+  const { t } = useTranslation();
+
+  
 
   const [formData, setFormData] = useState({
     recipeName: "",
@@ -116,116 +121,115 @@ const UploadForm = () => {
 
   return (
     <>
-      <main>
-        <div className="form_container">
-          <h1 className="form_header"> ÚJ RECEPT</h1>
+     <main>
+  <div className="form_container">
+    <h1 className="form_header">{t('UploadForm.header')}</h1>
 
-          <form className="form_form" onSubmit={handleSubmit}>
-            <label className="form_label">Új recept:</label>
-            <input
-              className="form_input"
-              type="text"
-              placeholder="add meg az uj recept nevet!"
-              name="recipeName"
-              value={formData.recipeName}
-              onChange={handleInputChange}
-            />
-            <label className="form_label" >Nyelv:</label>
-            <select className="form_select" name="language" value={formData.language} onChange={handleInputChange}>
-              <option value=''>Milyen nyelven írod a receptet?</option>
-              <option value="English">English</option>
-              <option value="Magyar">Magyar</option>
-              <option value="Romana">Româna</option>
-            </select>
-            <br />
-            <label className="form_label">Hozzávalok:</label>
-            {formData.ingList.length !== 0 ? (
-              formData.ingList.map((ing, id) => <li key={id}>{ing}</li>)
-            ) : (
-              <li>Nincs hozzá adva alapanyag!</li>
-            )}
-            <input
-              className="form_input"
-              placeholder="új hozzávaló?"
-              type="text"
-              onKeyDown={handleEnter}
-              name="storredIng"
-              value={formData.storredIng}
-              onChange={handleInputChange}
-            />
-            <div className="form_listbutton">
-              <button className="form_button" onClick={handleAdd}>
-                Hozzá ad!
-              </button>
-              <button className="form_button" onClick={deleteIng}>
-                Utolsó törlése!
-              </button>
-            </div>
-            <br />
-            <label className="form_label">Elkészítés:</label>
-            <br />
-            <textarea
-              className="form_input"
-              onChange={handleInputChange}
-              rows="10"
-              cols="80"
-              placeholder="Írd le részletesen hogy kell..."
-              name="instructions"
-              value={formData.instructions}
-            ></textarea>
-            <br />
-            <label className="form_label">Kép linkje:</label>
-            <input
-              className="form_input"
-              onChange={handleInputChange}
-              type="text"
-              placeholder="adj meg URL-t"
-              name="imgLink"
-              value={formData.imgLink}
-            />
-            <br />
-            <label className="form_label">Elkészítési időtartama (perc):</label>
-            <input
-              className="form_input"
-              onChange={handleInputChange}
-              type="number"
-              name="cookingTime"
-              value={formData.cookingTime}
-            />
-            <br />
-            <label className="form_label" >Étkezés:</label>
-            <select className="form_select" name="mealtime" value={formData.mealtime} onChange={handleInputChange}>
-              <option value="Kivalaszt">Kiválaszt</option>
-              <option value="Eloetel">Előétel</option>
-              <option value="Foetel">Főétel</option>
-              <option value="Desszert">Desszert</option>
-              <option value="Leves">Leves</option>
-            </select>
-            <br />
-            <label className="form_label" >Kategória:</label>
-            <select className="form_select" name="category" value={formData.category} onChange={handleInputChange}>
-              <option value="Kivalaszt">Kiválaszt</option>
-              <option value="Hagyomanyos">Hagyományos</option>
-              <option value="Inyenc">Ínyenc</option>
-              <option value="Vegetarianus">Vegetáriánus</option>
-              <option value="Vegan">Vegán</option>
-              <option value="Salata">Saláta</option>
-            </select>
-            <br />
-            {succes && <h3 style={{ ...styles.header, color: 'green' }}>Mentve!</h3>}
-            {loading && <h3 style={{ ...styles.header, color: '#F05941' }}>Folyamatban...!</h3>}
-            {error && <h3 style={{ ...styles.header, color: 'red' }}>Hiba a mentés során!</h3>}
+    <form className="form_form" onSubmit={handleSubmit}>
+      <label className="form_label">{t('UploadForm.labels.newRecipe')}</label>
+      <input
+        className="form_input"
+        type="text"
+        placeholder={t('UploadForm.labels.newIngredient')}
+        name="recipeName"
+        value={formData.recipeName}
+        onChange={handleInputChange}
+      />
+      <label className="form_label">{t('UploadForm.labels.language')}</label>
+      <select className="form_select" name="language" value={formData.language} onChange={handleInputChange}>
+        <option value=''>{t('UploadForm.selectOptions.language.prompt')}</option>
+        <option value="English">English</option>
+        <option value="Magyar">Magyar</option>
+        <option value="Romana">Româna</option>
+      </select>
+      <br />
+      <label className="form_label">{t('UploadForm.labels.ingredients')}</label>
+      {formData.ingList.length !== 0 ? (
+        formData.ingList.map((ing, id) => <li key={id}>{ing}</li>)
+      ) : (
+        <li>{t('UploadForm.messages.noIngredients')}</li>
+      )}
+      <input
+        className="form_input"
+        placeholder={t('UploadForm.labels.newIngredient')}
+        type="text"
+        onKeyDown={handleEnter}
+        name="storredIng"
+        value={formData.storredIng}
+        onChange={handleInputChange}
+      />
+      <div className="form_listbutton">
+        <button className="form_button" onClick={handleAdd}>
+          {t('UploadForm.labels.addIngredient')}
+        </button>
+        <button className="form_button" onClick={deleteIng}>
+          {t('UploadForm.labels.deleteLast')}
+        </button>
+      </div>
+      <br />
+      <label className="form_label">{t('UploadForm.labels.instructions')}</label>
+      <br />
+      <textarea
+        className="form_input"
+        onChange={handleInputChange}
+        rows="10"
+        cols="80"
+        placeholder={t('UploadForm.labels.instructionsPlaceholder')}
+        name="instructions"
+        value={formData.instructions}
+      ></textarea>
+      <br />
+      <label className="form_label">{t('UploadForm.labels.imageLink')}</label>
+      <input
+        className="form_input"
+        onChange={handleInputChange}
+        type="text"
+        placeholder={t('UploadForm.labels.imageLink')}
+        name="imgLink"
+        value={formData.imgLink}
+      />
+      <br />
+      <label className="form_label">{t('UploadForm.labels.cookingTime')}</label>
+      <input
+        className="form_input"
+        onChange={handleInputChange}
+        type="number"
+        name="cookingTime"
+        value={formData.cookingTime}
+      />
+      <br />
+      <label className="form_label">{t('UploadForm.labels.mealtime')}</label>
+      <select className="form_select" name="mealtime" value={formData.mealtime} onChange={handleInputChange}>
+        <option value="Select">{t('UploadForm.selectOptions.mealtime.select')}</option>
+        <option value="Appetizer">{t('UploadForm.selectOptions.mealtime.appetizer')}</option>
+        <option value="Main">{t('UploadForm.selectOptions.mealtime.mainCourse')}</option>
+        <option value="Dessert">{t('UploadForm.selectOptions.mealtime.dessert')}</option>
+        <option value="Soup">{t('UploadForm.selectOptions.mealtime.soup')}</option>
+      </select>
+      <br />
+      <label className="form_label">{t('UploadForm.labels.category')}</label>
+      <select className="form_select" name="category" value={formData.category} onChange={handleInputChange}>
+        <option value="Select">{t('UploadForm.selectOptions.category.select')}</option>
+        <option value="Traditional">{t('UploadForm.selectOptions.category.traditional')}</option>
+        <option value="Gourmet">{t('UploadForm.selectOptions.category.gourmet')}</option>
+        <option value="Vegetarian">{t('UploadForm.selectOptions.category.vegetarian')}</option>
+        <option value="Vegan">{t('UploadForm.selectOptions.category.vegan')}</option>
+        <option value="Salad">{t('UploadForm.selectOptions.category.salad')}</option>
+      </select>
+      <br />
+      {succes && <h3 style={{ ...styles.header, color: 'green' }}>{t('UploadForm.messages.saved')}</h3>}
+      {loading && <h3 style={{ ...styles.header, color: '#F05941' }}>{t('UploadForm.messages.loading')}</h3>}
+      {error && <h3 style={{ ...styles.header, color: 'red' }}>{t('UploadForm.messages.saveError')}</h3>}
 
-            <div className="form_listbutton">
-
-              <button className='form_button' type="submit">
-                Mentés!
-              </button>
-            </div>
-            <br />
-          </form>
-        </div>
-      </main>
+      <div className="form_listbutton">
+        <button className='form_button' type="submit">
+          {t('UploadForm.labels.saveButton')}
+        </button>
+      </div>
+      <br />
+    </form>
+  </div>
+</main>
     </>
   );
 };
