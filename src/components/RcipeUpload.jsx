@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
 
 
-import blankFood from "../../images/blankfoodimage.png"
+import blankFood from "../images/blankfoodimage.png"
 
 const UploadForm = () => {
 

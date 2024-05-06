@@ -19,7 +19,7 @@ html, body {
 }
 /* LANDING PAGE */
 .landing_container {
-  background-image: url(../images/header.jpg);
+  background-image: url(./images/header.jpg);
   background-color: rgba(0, 0, 0, 0.677);
   background-blend-mode: overlay;
   background-size: cover;
@@ -88,7 +88,7 @@ html, body {
 
 /* HEADER */
 header {
-  background-image: url(../images/header.jpg);
+  background-image: url(./images/header.jpg);
   background-color: rgba(0, 0, 0, 0.524);
   background-blend-mode: overlay;
 }

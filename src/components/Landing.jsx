@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import MenuIcon from '@mui/icons-material/Menu';
 import { Link } from 'react-router-dom'
 import { useTranslation } from 'react-i18next';
+import  pot from '../images/pot_image.png'
 
 
 
@@ -52,7 +53,7 @@ export default function Landing() {
                         </h1>
                     </div>
                     <div className='landing-greet'></div>
-                    <img className='pot_image' src='../images/pot_image.png'></img>
+                    <img className='pot_image' src={pot}></img>
 
                 </div>
 
