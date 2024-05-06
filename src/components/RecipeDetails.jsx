@@ -74,7 +74,7 @@ const DetailPage = () => {
               <p>{recipe.instructions}</p> : <p>{t('DetailPage.loading')}</p>}
             <br />
             {recipe && recipe.preparation_time ? 
-              <h3>{t('DetailPage.cookingTime', { time: recipe.preparation_time })}</h3> : <p>{t('DetailPage.loading')}</p>}
+              <h3>{t('MyDetailPage.cookingTime')} {recipe.preparation_time} {t('MyDetailPage.minute')}</h3> : <p>{t('MyDetailPage.loading')}</p>}
           </div>
         </div>
       </div>

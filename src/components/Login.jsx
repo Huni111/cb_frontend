@@ -32,7 +32,6 @@ const LoginPage = () => {
     setError(null)
     
 
-    // Perform login logic here, like sending data to the server
     try {
       const req = await fetch(authLink, {
         method: 'POST',

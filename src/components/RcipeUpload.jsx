@@ -151,7 +151,7 @@ const UploadForm = () => {
       )}
       <input
         className="form_input"
-        placeholder={t('UploadForm.labels.newIngredient')}
+        placeholder={t('UploadForm.labels.newRecipe')}
         type="text"
         onKeyDown={handleEnter}
         name="storredIng"
